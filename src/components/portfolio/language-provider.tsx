@@ -1,6 +1,14 @@
 "use client";
 
-import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 export type PortfolioLanguage = "pt" | "en";
 
@@ -97,8 +105,8 @@ const UI_TRANSLATIONS: Record<PortfolioLanguage, Record<TranslationKey, string>>
 };
 
 const RESUME_LINKS: Record<PortfolioLanguage, string> = {
-  pt: "/resume/ivan-barbosa-cv-pt.txt",
-  en: "/resume/ivan-barbosa-resume-en.txt",
+  pt: "https://docs.google.com/document/d/18xSacC33PhH1sgtcVA2d4E-V0GP4Pu7vvos1sNfBbVA/edit?usp=sharing",
+  en: "https://drive.google.com/file/d/1Ub0Y7_sCrG_3Z99M7bYGMpnAC62RLEaY/view?usp=sharing",
 };
 
 type PortfolioLanguageContextValue = {
@@ -117,19 +125,14 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<PortfolioLanguage>(DEFAULT_LANGUAGE);
   const hasHydratedLanguageRef = useRef(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const savedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
-    const rafId = window.requestAnimationFrame(() => {
-      if (isPortfolioLanguage(savedLanguage)) {
-        setLanguage(savedLanguage);
-      }
 
-      hasHydratedLanguageRef.current = true;
-    });
+    if (isPortfolioLanguage(savedLanguage)) {
+      setLanguage(savedLanguage);
+    }
 
-    return () => {
-      window.cancelAnimationFrame(rafId);
-    };
+    hasHydratedLanguageRef.current = true;
   }, []);
 
   useEffect(() => {

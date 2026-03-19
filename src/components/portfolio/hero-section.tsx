@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Linkedin, Mail, Phone, Terminal } from "lucide-react";
+import { Languages, Linkedin, Mail, Phone, Terminal } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -18,7 +18,7 @@ import { usePortfolioLanguage } from "@/components/portfolio/language-provider";
 import { PROFILE_BIO } from "@/data/portfolio";
 
 export function HeroSection() {
-  const { t, resumeHref } = usePortfolioLanguage();
+  const { t, resumeHref, language, setLanguage } = usePortfolioLanguage();
   const [copiedField, setCopiedField] = useState<"email" | "phone" | null>(null);
   const copyTimeoutRef = useRef<number | null>(null);
 
@@ -49,49 +49,96 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="p-6 pt-12 pb-8 lg:px-4 lg:pt-8 lg:pb-6">
-      <div className="corner-bracket border border-primary/10 bg-primary/5 p-6 lg:p-5">
-          <div className="mb-4 flex items-start gap-4">
-            <Avatar className="size-16 rounded-none border border-primary/40">
-              <AvatarImage
-                src={PROFILE_BIO.avatar.src}
-                alt={PROFILE_BIO.avatar.alt}
-                className="grayscale"
-              />
-              <AvatarFallback className="rounded-none bg-primary/10 font-bold text-primary">
-                I
-              </AvatarFallback>
-            </Avatar>
+    <section className="p-6 pt-12 pb-8 lg:px-4 lg:pt-6 lg:pb-4">
+      <div className="corner-bracket overflow-hidden border border-primary/10 bg-primary/5 lg:grid lg:grid-cols-[minmax(160px,20%)_1fr] lg:p-0">
+        <div className="relative hidden lg:block lg:p-7">
+          <img
+            src={PROFILE_BIO.avatar.src}
+            alt={PROFILE_BIO.avatar.alt}
+            className="h-full w-full object-contain object-center"
+          />
+          <div className="pointer-events-none absolute inset-7 bg-gradient-to-tr from-background/35 via-transparent to-transparent" />
+        </div>
 
-            <div className="min-w-0">
-              <h2 className="text-base font-bold leading-tight text-foreground sm:text-lg">
-                {PROFILE_BIO.name}
-              </h2>
-              <p className="text-[10px] font-mono tracking-tight text-primary uppercase">
-                {PROFILE_BIO.location}
-              </p>
+        <div className="p-6 lg:flex lg:flex-col lg:justify-between lg:p-7">
+          <div>
+            <div className="mb-4 flex items-start justify-between gap-4">
+              <div className="flex items-start gap-4">
+                <Avatar className="size-16 rounded-none border border-primary/40 lg:hidden">
+                  <AvatarImage
+                    src={PROFILE_BIO.avatar.src}
+                    alt={PROFILE_BIO.avatar.alt}
+                    className="object-cover object-center"
+                  />
+                  <AvatarFallback className="rounded-none bg-primary/10 font-bold text-primary">
+                    I
+                  </AvatarFallback>
+                </Avatar>
+
+                <div className="min-w-0">
+                  <h2 className="text-base font-bold leading-tight text-foreground sm:text-lg">
+                    {PROFILE_BIO.name}
+                  </h2>
+                  <p className="text-[10px] font-mono tracking-tight text-primary uppercase">
+                    {PROFILE_BIO.location}
+                  </p>
+                </div>
+              </div>
+
+              <div
+                aria-label={t("header.languageSelectorAria")}
+                className="hidden items-center gap-2 rounded border border-primary/30 bg-primary/10 px-2 py-1 lg:flex"
+              >
+                <Languages className="size-3.5 text-primary/80" aria-hidden="true" />
+                <button
+                  type="button"
+                  onClick={() => setLanguage("pt")}
+                  className={`cursor-pointer text-[10px] font-bold tracking-widest uppercase transition-colors ${
+                    language === "pt"
+                      ? "text-primary"
+                      : "text-primary/60 hover:text-primary/80"
+                  }`}
+                  aria-pressed={language === "pt"}
+                >
+                  PT
+                </button>
+                <span className="text-[10px] text-primary/40">|</span>
+                <button
+                  type="button"
+                  onClick={() => setLanguage("en")}
+                  className={`cursor-pointer text-[10px] font-bold tracking-widest uppercase transition-colors ${
+                    language === "en"
+                      ? "text-primary"
+                      : "text-primary/60 hover:text-primary/80"
+                  }`}
+                  aria-pressed={language === "en"}
+                >
+                  EN
+                </button>
+              </div>
+            </div>
+
+            <p className="mb-4 text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
+              {t("profile.summary")}
+            </p>
+
+            <span className="mt-2 block text-xs font-mono text-primary/80">
+              {"React | Next.js | NestJS | TypeScript | PostgreSQL | Azure OpenAI | AWS"}
+            </span>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              {PROFILE_BIO.principles.map((principle) => (
+                <Badge
+                  key={principle}
+                  variant="outline"
+                  className="max-w-full justify-start rounded-sm border-primary/20 bg-transparent px-2 py-1 text-[10px] leading-snug text-primary/70 whitespace-normal break-words"
+                >
+                  {`● ${principle}`}
+                </Badge>
+              ))}
             </div>
           </div>
 
-          <p className="mb-4 text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
-            {t("profile.summary")}
-          </p>
-
-          <span className="mt-2 block text-xs text-primary/80 font-mono">
-            {"// Next.js, React, Node.js & TypeScript"}
-          </span>
-
-          <div className="flex flex-wrap gap-2 mt-4">
-            {PROFILE_BIO.principles.map((principle) => (
-              <Badge
-                key={principle}
-                variant="outline"
-                className="max-w-full justify-start rounded-sm border-primary/20 bg-transparent px-2 py-1 text-[10px] leading-snug text-primary/70 whitespace-normal break-words"
-              >
-                {`● ${principle}`}
-              </Badge>
-            ))}
-          </div>
           <div className="mt-4 flex flex-col gap-3 lg:flex-row lg:items-start">
             <Sheet>
               <SheetTrigger asChild>
@@ -163,13 +210,13 @@ export function HeroSection() {
               <a
                 href={resumeHref}
                 target="_blank"
-                rel="noreferrer"
-                download
+                rel="noreferrer noopener"
               >
                 {t("hero.downloadLabel")}
               </a>
             </Button>
           </div>
+        </div>
       </div>
     </section>
   );

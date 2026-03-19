@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Languages, Moon, Sun } from "lucide-react";
 
 import { Switch } from "@/components/ui/switch";
@@ -14,7 +14,7 @@ export function HudHeader() {
   const [isDark, setIsDark] = useState(true);
   const hasHydratedThemeRef = useRef(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
     const hydratedTheme =
       savedTheme === "dark"
@@ -22,14 +22,12 @@ export function HudHeader() {
         : savedTheme === "light"
           ? false
           : document.documentElement.classList.contains("dark");
-    const rafId = window.requestAnimationFrame(() => {
-      setIsDark(hydratedTheme);
-      hasHydratedThemeRef.current = true;
-    });
 
-    return () => {
-      window.cancelAnimationFrame(rafId);
-    };
+    setIsDark((currentTheme) =>
+      currentTheme === hydratedTheme ? currentTheme : hydratedTheme
+    );
+    document.documentElement.classList.toggle("dark", hydratedTheme);
+    hasHydratedThemeRef.current = true;
   }, []);
 
   useEffect(() => {
@@ -56,7 +54,7 @@ export function HudHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 flex items-center justify-between border-b p-4 backdrop-blur-sm transition-colors duration-300 ${headerContainerClass}`}
+      className={`sticky top-0 z-50 flex items-center justify-between border-b p-4 backdrop-blur-[2px] transition-colors duration-300 ${headerContainerClass}`}
     >
       <div className="flex items-center gap-2">
         <div className="flex h-8 w-8 items-center justify-center border border-primary bg-primary/10 text-lg font-bold text-primary">

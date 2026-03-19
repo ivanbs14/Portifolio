@@ -174,7 +174,7 @@ export const PROFILE_BIO = {
     "Full-stack",
   ],
   avatar: {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAUHyYW1C_23ILM4JKxd-QZp6UsGzyWWiZHn6GLKtawr4nabe15kNoFgxGObn4EKrQyN0-gAk1J-lVUr1nkjwm57Y5WqaELfq_DtAvewWmAlPqTYoPispNnDFgj5Jm1Vnoda5Ue1eRYkwTN3H9ZedX1318yPPhnIuj1vhWs4-45DeMf7-g_Pm_U1yamPRuz9-dt4Tb56hKStVDxvzN7_YJQ_qltDywTQ5mNyJgs_ErNFsuVwr0F3dsoJYDeUFgrzJVBfFFndg3FtZ4q",
+    src: "/Screenshot%202026-03-19%20at%2018.37.50.png",
     alt: "Portrait of a software developer.",
   },
 } as const;
