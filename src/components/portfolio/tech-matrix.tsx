@@ -32,7 +32,7 @@ export function TechMatrix() {
             {t("section.techMatrix")}
           </h2>
 
-          <div className="space-y-6 lg:space-y-5">
+          <div className="space-y-2 lg:space-y-2">
             {TECH_MATRIX.map((group) => (
               <div key={group.category}>
                 <span className="mb-2 block text-[10px] tracking-widest text-muted-foreground uppercase">

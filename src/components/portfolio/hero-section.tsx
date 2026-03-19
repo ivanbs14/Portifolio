@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Languages, Linkedin, Mail, Phone, Terminal } from "lucide-react";
+import { Linkedin, Mail, Phone, Terminal } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -18,9 +18,15 @@ import { usePortfolioLanguage } from "@/components/portfolio/language-provider";
 import { PROFILE_BIO } from "@/data/portfolio";
 
 export function HeroSection() {
-  const { t, resumeHref, language, setLanguage } = usePortfolioLanguage();
+  const { t, resumeHref } = usePortfolioLanguage();
   const [copiedField, setCopiedField] = useState<"email" | "phone" | null>(null);
   const copyTimeoutRef = useRef<number | null>(null);
+  const translatedPrinciples = [
+    t("profile.principle.scalableArchitecture"),
+    t("profile.principle.technicalLeadership"),
+    t("profile.principle.teamCollaboration"),
+    t("profile.principle.fullStack"),
+  ];
 
   const handleCopy = async (value: string, field: "email" | "phone") => {
     try {
@@ -49,7 +55,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="p-6 pt-12 pb-8 lg:px-4 lg:pt-6 lg:pb-4">
+    <section className="p-6 pt-6 pb-8 lg:px-4 lg:pt-4 lg:pb-4">
       <div className="corner-bracket overflow-hidden border border-primary/10 bg-primary/5 lg:grid lg:grid-cols-[minmax(160px,20%)_1fr] lg:p-0">
         <div className="relative hidden lg:block lg:p-7">
           <img
@@ -85,37 +91,6 @@ export function HeroSection() {
                 </div>
               </div>
 
-              <div
-                aria-label={t("header.languageSelectorAria")}
-                className="hidden items-center gap-2 rounded border border-primary/30 bg-primary/10 px-2 py-1 lg:flex"
-              >
-                <Languages className="size-3.5 text-primary/80" aria-hidden="true" />
-                <button
-                  type="button"
-                  onClick={() => setLanguage("pt")}
-                  className={`cursor-pointer text-[10px] font-bold tracking-widest uppercase transition-colors ${
-                    language === "pt"
-                      ? "text-primary"
-                      : "text-primary/60 hover:text-primary/80"
-                  }`}
-                  aria-pressed={language === "pt"}
-                >
-                  PT
-                </button>
-                <span className="text-[10px] text-primary/40">|</span>
-                <button
-                  type="button"
-                  onClick={() => setLanguage("en")}
-                  className={`cursor-pointer text-[10px] font-bold tracking-widest uppercase transition-colors ${
-                    language === "en"
-                      ? "text-primary"
-                      : "text-primary/60 hover:text-primary/80"
-                  }`}
-                  aria-pressed={language === "en"}
-                >
-                  EN
-                </button>
-              </div>
             </div>
 
             <p className="mb-4 text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
@@ -127,7 +102,7 @@ export function HeroSection() {
             </span>
 
             <div className="mt-4 flex flex-wrap gap-2">
-              {PROFILE_BIO.principles.map((principle) => (
+              {translatedPrinciples.map((principle) => (
                 <Badge
                   key={principle}
                   variant="outline"
