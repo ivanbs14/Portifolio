@@ -1,5 +1,7 @@
 "use client";
 
+import { useMemo } from "react";
+
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { usePortfolioLanguage } from "@/components/portfolio/language-provider";
@@ -7,11 +9,14 @@ import { METRICS_CHIPS } from "@/data/portfolio";
 
 export function MetricsChips() {
   const { t } = usePortfolioLanguage();
-  const metricLabelByValue: Record<string, string> = {
-    "5+": t("metric.yearsExp"),
-    "99%": t("metric.perfScore"),
-    SOLID: t("metric.cleanArch"),
-  };
+  const metricLabelByValue = useMemo<Record<string, string>>(
+    () => ({
+      "5+": t("metric.yearsExp"),
+      "99%": t("metric.perfScore"),
+      SOLID: t("metric.cleanArch"),
+    }),
+    [t]
+  );
 
   return (
     <section className="px-6 pb-8" aria-label={t("section.coreMetrics")}>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { BarChart3, GitBranch, Home, Plus, User } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -13,24 +14,29 @@ const NAV_ICON = {
   about: User,
 } as const;
 
+const LEFT_NAV_ITEMS = BOTTOM_HUD_NAV.slice(0, 2);
+const RIGHT_NAV_ITEMS = BOTTOM_HUD_NAV.slice(2);
+
 export function BottomHudNav() {
   const { t } = usePortfolioLanguage();
 
-  const leftItems = BOTTOM_HUD_NAV.slice(0, 2);
-  const rightItems = BOTTOM_HUD_NAV.slice(2);
-  const navLabelByIcon = {
-    home: t("nav.home"),
-    projects: t("nav.projects"),
-    stack: t("nav.stack"),
-    about: t("nav.about"),
-  } as const;
+  const navLabelByIcon = useMemo(
+    () =>
+      ({
+        home: t("nav.home"),
+        projects: t("nav.projects"),
+        stack: t("nav.stack"),
+        about: t("nav.about"),
+      }) as const,
+    [t]
+  );
 
   return (
     <nav
-      className="fixed right-0 bottom-0 left-0 z-50 mx-auto flex w-full max-w-md items-center justify-between border-t border-primary/20 bg-background/90 px-6 py-3 backdrop-blur-xl lg:hidden"
+      className="fixed right-0 bottom-0 left-0 z-50 mx-auto flex w-full max-w-md items-center justify-between border-t border-primary/20 bg-background/90 px-6 py-3 backdrop-blur-md lg:hidden"
       aria-label={t("nav.ariaLabel")}
     >
-      {leftItems.map((item) => {
+      {LEFT_NAV_ITEMS.map((item) => {
         const Icon = NAV_ICON[item.icon];
         const label = navLabelByIcon[item.icon] ?? item.label;
 
@@ -60,7 +66,7 @@ export function BottomHudNav() {
         <Plus className="size-5" />
       </Button>
 
-      {rightItems.map((item) => {
+      {RIGHT_NAV_ITEMS.map((item) => {
         const Icon = NAV_ICON[item.icon];
         const label = navLabelByIcon[item.icon] ?? item.label;
 

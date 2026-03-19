@@ -145,7 +145,13 @@
       transparent 4px
     );
     mix-blend-mode: screen;
+    opacity: 0.75;
+    will-change: transform;
     animation: scanline-shift 8s linear infinite;
+  }
+
+  .status-indicator {
+    animation: status-pulse 2.4s ease-in-out infinite;
   }
 
   .corner-bracket {
@@ -192,5 +198,31 @@
 
   to {
     transform: translateY(4px);
+  }
+}
+
+@keyframes status-pulse {
+  0%,
+  100% {
+    opacity: 0.9;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@media (max-width: 768px) {
+  .scanline::after {
+    mix-blend-mode: normal;
+    opacity: 0.45;
+    animation-duration: 14s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scanline::after,
+  .status-indicator {
+    animation: none;
   }
 }

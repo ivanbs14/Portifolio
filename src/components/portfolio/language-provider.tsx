@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
 
 export type PortfolioLanguage = "pt" | "en";
 
@@ -115,25 +115,30 @@ const isPortfolioLanguage = (value: string | null): value is PortfolioLanguage =
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<PortfolioLanguage>(DEFAULT_LANGUAGE);
-  const [hasHydratedLanguage, setHasHydratedLanguage] = useState(false);
+  const hasHydratedLanguageRef = useRef(false);
 
   useEffect(() => {
     const savedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    const rafId = window.requestAnimationFrame(() => {
+      if (isPortfolioLanguage(savedLanguage)) {
+        setLanguage(savedLanguage);
+      }
 
-    if (isPortfolioLanguage(savedLanguage)) {
-      setLanguage(savedLanguage);
-    }
+      hasHydratedLanguageRef.current = true;
+    });
 
-    setHasHydratedLanguage(true);
+    return () => {
+      window.cancelAnimationFrame(rafId);
+    };
   }, []);
 
   useEffect(() => {
-    if (!hasHydratedLanguage) {
+    if (!hasHydratedLanguageRef.current) {
       return;
     }
 
     window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
-  }, [hasHydratedLanguage, language]);
+  }, [language]);
 
   const value = useMemo<PortfolioLanguageContextValue>(() => {
     const t = (key: TranslationKey) =>

@@ -16,7 +16,7 @@ export default function Page() {
       <main className="relative min-h-screen bg-secondary text-foreground">
         <BackgroundEffects />
 
-        <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-md flex-col border-x border-primary/10 bg-background/70 pb-24 backdrop-blur-sm lg:max-w-6xl lg:pb-8">
+        <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-md flex-col border-x border-primary/10 bg-background/70 pb-24 backdrop-blur-[2px] md:backdrop-blur-sm lg:max-w-6xl lg:pb-8">
           <HudHeader />
           <StatusBar />
           <HeroSection />

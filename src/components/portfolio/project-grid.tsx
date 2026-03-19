@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { Code2, ExternalLink } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -42,27 +43,34 @@ const PROJECT_GRID_PT = [
 
 export function ProjectGrid() {
   const { language, t } = usePortfolioLanguage();
-  const linkLabelByType: Record<ProjectLink, string> = {
-    code: t("project.linkLabelCode"),
-    external: t("project.linkLabelExternal"),
-  };
-  const localizedProjects = PROJECT_GRID.map((project, index) => {
-    if (language !== "pt") {
-      return project;
-    }
+  const linkLabelByType = useMemo<Record<ProjectLink, string>>(
+    () => ({
+      code: t("project.linkLabelCode"),
+      external: t("project.linkLabelExternal"),
+    }),
+    [t]
+  );
+  const localizedProjects = useMemo(
+    () =>
+      PROJECT_GRID.map((project, index) => {
+        if (language !== "pt") {
+          return project;
+        }
 
-    const translatedProject = PROJECT_GRID_PT[index];
+        const translatedProject = PROJECT_GRID_PT[index];
 
-    if (!translatedProject) {
-      return project;
-    }
+        if (!translatedProject) {
+          return project;
+        }
 
-    return {
-      ...project,
-      title: translatedProject.title,
-      description: translatedProject.description,
-    };
-  });
+        return {
+          ...project,
+          title: translatedProject.title,
+          description: translatedProject.description,
+        };
+      }),
+    [language]
+  );
 
   return (
     <section className="px-6 pb-12 lg:px-4 lg:pb-8" aria-labelledby="project-grid-title">
@@ -76,23 +84,23 @@ export function ProjectGrid() {
         <Separator className="w-auto flex-1 bg-primary/20" />
       </div>
 
-      <div className="grid grid-cols-1 gap-4 lg:gap-3">
-        {localizedProjects.map((project, index) => (
-          <Card
-            key={`${project.version}-${index}`}
-            className="corner-bracket rounded border-primary/10 bg-primary/5 p-0 shadow-none transition-colors hover:border-primary/40"
-          >
-            <CardContent className="space-y-3 p-4">
-              <h3 className="text-sm font-bold tracking-wider text-foreground uppercase">
-                {project.title}
-              </h3>
+      <TooltipProvider>
+        <div className="grid grid-cols-1 gap-4 lg:gap-3">
+          {localizedProjects.map((project, index) => (
+            <Card
+              key={`${project.version}-${index}`}
+              className="corner-bracket rounded border-primary/10 bg-primary/5 p-0 shadow-none transition-colors hover:border-primary/40"
+            >
+              <CardContent className="space-y-3 p-4">
+                <h3 className="text-sm font-bold tracking-wider text-foreground uppercase">
+                  {project.title}
+                </h3>
 
-              <p className="text-[11px] leading-snug text-muted-foreground">
-                {project.description}
-              </p>
+                <p className="text-[11px] leading-snug text-muted-foreground">
+                  {project.description}
+                </p>
 
-              <div className="flex items-center justify-between">
-                <TooltipProvider>
+                <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     {project.links.map((link) => {
                       const Icon = LINK_ICON[link];
@@ -140,19 +148,19 @@ export function ProjectGrid() {
                       );
                     })}
                   </div>
-                </TooltipProvider>
 
-                <Badge
-                  variant="ghost"
-                  className="rounded-sm px-0 font-mono text-[10px] text-muted-foreground"
-                >
-                  {project.version}
-                </Badge>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+                  <Badge
+                    variant="ghost"
+                    className="rounded-sm px-0 font-mono text-[10px] text-muted-foreground"
+                  >
+                    {project.version}
+                  </Badge>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </TooltipProvider>
     </section>
   );
 }

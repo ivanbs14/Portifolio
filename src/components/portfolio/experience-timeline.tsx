@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { usePortfolioLanguage } from "@/components/portfolio/language-provider";
 import { EXPERIENCE_TIMELINE } from "@/data/portfolio";
 
@@ -46,24 +47,28 @@ const EXPERIENCE_TIMELINE_PT = [
 
 export function ExperienceTimeline() {
   const { t, language } = usePortfolioLanguage();
-  const localizedTimeline = EXPERIENCE_TIMELINE.map((entry, index) => {
-    if (language !== "pt") {
-      return entry;
-    }
+  const localizedTimeline = useMemo(
+    () =>
+      EXPERIENCE_TIMELINE.map((entry, index) => {
+        if (language !== "pt") {
+          return entry;
+        }
 
-    const translatedEntry = EXPERIENCE_TIMELINE_PT[index];
+        const translatedEntry = EXPERIENCE_TIMELINE_PT[index];
 
-    if (!translatedEntry) {
-      return entry;
-    }
+        if (!translatedEntry) {
+          return entry;
+        }
 
-    return {
-      ...entry,
-      period: translatedEntry.period,
-      title: translatedEntry.title,
-      highlights: translatedEntry.highlights,
-    };
-  });
+        return {
+          ...entry,
+          period: translatedEntry.period,
+          title: translatedEntry.title,
+          highlights: translatedEntry.highlights,
+        };
+      }),
+    [language]
+  );
 
   return (
     <section className="px-6 pb-12 lg:px-4 lg:pb-8" aria-labelledby="experience-timeline-title">

@@ -9,22 +9,55 @@ const randomDelta = (range: number) =>
 const clamp = (value: number, min: number, max: number) =>
   Math.max(min, Math.min(max, value));
 
+const STATUS_UPDATE_INTERVAL_MS = 2200;
+
 export function StatusBar() {
   const [cpu, setCpu] = useState(12);
   const [latency, setLatency] = useState(24);
 
   useEffect(() => {
-    const cpuTimer = window.setInterval(() => {
+    const updateStatus = () => {
       setCpu((prev) => clamp(prev + randomDelta(4), 8, 28));
-    }, 1300);
-
-    const latencyTimer = window.setInterval(() => {
       setLatency((prev) => clamp(prev + randomDelta(5), 16, 46));
-    }, 1100);
+    };
+
+    let intervalId: number | null = null;
+
+    const stopInterval = () => {
+      if (intervalId === null) {
+        return;
+      }
+
+      window.clearInterval(intervalId);
+      intervalId = null;
+    };
+
+    const startInterval = () => {
+      if (intervalId !== null) {
+        return;
+      }
+
+      intervalId = window.setInterval(updateStatus, STATUS_UPDATE_INTERVAL_MS);
+    };
+
+    updateStatus();
+    startInterval();
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopInterval();
+        return;
+      }
+
+      updateStatus();
+      startInterval();
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
-      window.clearInterval(cpuTimer);
-      window.clearInterval(latencyTimer);
+      stopInterval();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 
@@ -33,7 +66,7 @@ export function StatusBar() {
       <div className="flex flex-none items-center gap-1 text-[10px] tracking-tighter uppercase">
         <Wifi className="h-3 w-3 text-emerald-400" />
         <span className="text-primary/60">Uplink:</span>
-        <span className="animate-pulse text-emerald-400 [text-shadow:0_0_10px_rgba(74,222,128,0.75)]">
+        <span className="status-indicator text-emerald-400 [text-shadow:0_0_10px_rgba(74,222,128,0.75)]">
           Active
         </span>
       </div>
@@ -41,7 +74,7 @@ export function StatusBar() {
       <div className="flex flex-none items-center gap-1 text-[10px] tracking-tighter uppercase">
         <Cpu className="h-3 w-3 text-emerald-400" />
         <span className="text-primary/60">CPU:</span>
-        <span className="tabular-nums text-emerald-400 transition-all duration-500 [text-shadow:0_0_8px_rgba(74,222,128,0.65)]">
+        <span className="tabular-nums text-emerald-400 transition-colors duration-500 [text-shadow:0_0_8px_rgba(74,222,128,0.65)]">
           {cpu}%
         </span>
       </div>
@@ -49,7 +82,7 @@ export function StatusBar() {
       <div className="flex flex-none items-center gap-1 text-[10px] tracking-tighter uppercase">
         <MapPin className="h-3 w-3 text-emerald-400" />
         <span className="text-primary/60">Lat:</span>
-        <span className="tabular-nums text-emerald-400 transition-all duration-500 [text-shadow:0_0_8px_rgba(74,222,128,0.65)]">
+        <span className="tabular-nums text-emerald-400 transition-colors duration-500 [text-shadow:0_0_8px_rgba(74,222,128,0.65)]">
           {latency}ms
         </span>
       </div>

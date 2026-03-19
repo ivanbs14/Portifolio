@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Languages, Moon, Sun } from "lucide-react";
 
 import { Switch } from "@/components/ui/switch";
@@ -12,31 +12,35 @@ export function HudHeader() {
   const { language, setLanguage, t } = usePortfolioLanguage();
 
   const [isDark, setIsDark] = useState(true);
-  const [hasHydratedTheme, setHasHydratedTheme] = useState(false);
+  const hasHydratedThemeRef = useRef(false);
 
   useEffect(() => {
     const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+    const hydratedTheme =
+      savedTheme === "dark"
+        ? true
+        : savedTheme === "light"
+          ? false
+          : document.documentElement.classList.contains("dark");
+    const rafId = window.requestAnimationFrame(() => {
+      setIsDark(hydratedTheme);
+      hasHydratedThemeRef.current = true;
+    });
 
-    if (savedTheme === "dark") {
-      setIsDark(true);
-    } else if (savedTheme === "light") {
-      setIsDark(false);
-    } else {
-      setIsDark(document.documentElement.classList.contains("dark"));
-    }
-
-    setHasHydratedTheme(true);
+    return () => {
+      window.cancelAnimationFrame(rafId);
+    };
   }, []);
 
   useEffect(() => {
-    if (!hasHydratedTheme) {
+    if (!hasHydratedThemeRef.current) {
       return;
     }
 
     const root = document.documentElement;
     root.classList.toggle("dark", isDark);
     window.localStorage.setItem(THEME_STORAGE_KEY, isDark ? "dark" : "light");
-  }, [hasHydratedTheme, isDark]);
+  }, [isDark]);
 
   const handleThemeChange = (checked: boolean) => {
     setIsDark(checked);
@@ -52,7 +56,7 @@ export function HudHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 flex items-center justify-between border-b p-4 backdrop-blur-md transition-all duration-300 ${headerContainerClass}`}
+      className={`sticky top-0 z-50 flex items-center justify-between border-b p-4 backdrop-blur-sm transition-colors duration-300 ${headerContainerClass}`}
     >
       <div className="flex items-center gap-2">
         <div className="flex h-8 w-8 items-center justify-center border border-primary bg-primary/10 text-lg font-bold text-primary">
@@ -66,7 +70,7 @@ export function HudHeader() {
       <div className="flex items-center gap-3">
         <div
           aria-label={t("header.languageSelectorAria")}
-          className={`flex items-center gap-2 rounded px-2 py-1 transition-all duration-300 ${controlContainerClass}`}
+          className={`flex items-center gap-2 rounded px-2 py-1 transition-colors duration-300 ${controlContainerClass}`}
         >
           <Languages className="h-3.5 w-3.5 text-primary/80" aria-hidden="true" />
           <button
@@ -96,7 +100,7 @@ export function HudHeader() {
           </button>
         </div>
         <div
-          className={`flex items-center gap-2 rounded px-2 py-1 transition-all duration-300 ${controlContainerClass}`}
+          className={`flex items-center gap-2 rounded px-2 py-1 transition-colors duration-300 ${controlContainerClass}`}
         >
           <Sun className="h-3.5 w-3.5 text-primary/70" aria-hidden="true" />
           <Switch

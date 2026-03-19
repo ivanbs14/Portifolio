@@ -1,5 +1,7 @@
 "use client";
 
+import { useMemo } from "react";
+
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { usePortfolioLanguage } from "@/components/portfolio/language-provider";
@@ -7,14 +9,17 @@ import { TECH_MATRIX } from "@/data/portfolio";
 
 export function TechMatrix() {
   const { t } = usePortfolioLanguage();
-  const categoryLabelByKey: Record<string, string> = {
-    Languages: t("tech.languages"),
-    Frontend: t("tech.frontend"),
-    Backend: t("tech.backend"),
-    Databases: t("tech.databases"),
-    "Cloud / DevOps": t("tech.cloudDevops"),
-    "AI / LLM": t("tech.aiLlm"),
-  };
+  const categoryLabelByKey = useMemo<Record<string, string>>(
+    () => ({
+      Languages: t("tech.languages"),
+      Frontend: t("tech.frontend"),
+      Backend: t("tech.backend"),
+      Databases: t("tech.databases"),
+      "Cloud / DevOps": t("tech.cloudDevops"),
+      "AI / LLM": t("tech.aiLlm"),
+    }),
+    [t]
+  );
 
   return (
     <section className="px-6 pb-12 lg:px-4 lg:pb-8" aria-labelledby="tech-matrix-title">

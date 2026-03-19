@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Linkedin, Mail, Phone, Terminal } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -39,6 +39,14 @@ export function HeroSection() {
       setCopiedField(null);
     }, 1800);
   };
+
+  useEffect(() => {
+    return () => {
+      if (copyTimeoutRef.current) {
+        window.clearTimeout(copyTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <section className="p-6 pt-12 pb-8 lg:px-4 lg:pt-8 lg:pb-6">
