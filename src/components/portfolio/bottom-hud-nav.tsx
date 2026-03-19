@@ -27,7 +27,7 @@ export function BottomHudNav() {
 
   return (
     <nav
-      className="fixed right-0 bottom-0 left-0 z-50 mx-auto flex max-w-md items-center justify-between border-t border-primary/20 bg-background/90 px-6 py-3 backdrop-blur-xl"
+      className="fixed right-0 bottom-0 left-0 z-50 mx-auto flex w-full max-w-md items-center justify-between border-t border-primary/20 bg-background/90 px-6 py-3 backdrop-blur-xl lg:hidden"
       aria-label={t("nav.ariaLabel")}
     >
       {leftItems.map((item) => {

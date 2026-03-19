@@ -66,17 +66,17 @@ export function ExperienceTimeline() {
   });
 
   return (
-    <section className="px-6 pb-12" aria-labelledby="experience-timeline-title">
+    <section className="px-6 pb-12 lg:px-4 lg:pb-8" aria-labelledby="experience-timeline-title">
       <h2
         id="experience-timeline-title"
-        className="mb-6 text-xs font-bold tracking-[0.3em] text-primary/60 uppercase"
+        className="mb-6 text-xs font-bold tracking-[0.3em] text-primary/60 uppercase lg:mb-5"
       >
         {t("section.experienceLogs")}
       </h2>
 
-      <div className="relative space-y-8 before:absolute before:top-2 before:bottom-0 before:left-[11px] before:w-px before:bg-primary/20 before:content-['']">
+      <div className="relative space-y-8 before:absolute before:top-2 before:bottom-0 before:left-[11px] before:w-px before:bg-primary/20 before:content-[''] lg:space-y-7">
         {localizedTimeline.map((entry) => (
-          <article key={`${entry.period}-${entry.title}`} className="relative pl-8">
+          <article key={`${entry.period}-${entry.title}`} className="relative pl-8 lg:pl-7">
             <div
               className={`absolute top-1 left-0 flex h-6 w-6 items-center justify-center rounded-full border ${
                 entry.isActive

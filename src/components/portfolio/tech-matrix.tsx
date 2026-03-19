@@ -17,9 +17,9 @@ export function TechMatrix() {
   };
 
   return (
-    <section className="px-6 pb-12" aria-labelledby="tech-matrix-title">
+    <section className="px-6 pb-12 lg:px-4 lg:pb-8" aria-labelledby="tech-matrix-title">
       <Card className="rounded border-primary/30 bg-primary/5 p-0 shadow-none">
-        <CardContent className="space-y-6 p-6">
+        <CardContent className="space-y-6 p-6 lg:space-y-5 lg:p-5">
           <h2
             id="tech-matrix-title"
             className="text-center text-xs font-bold tracking-[0.4em] text-primary uppercase"
@@ -27,7 +27,7 @@ export function TechMatrix() {
             {t("section.techMatrix")}
           </h2>
 
-          <div className="space-y-6">
+          <div className="space-y-6 lg:space-y-5">
             {TECH_MATRIX.map((group) => (
               <div key={group.category}>
                 <span className="mb-2 block text-[10px] tracking-widest text-muted-foreground uppercase">

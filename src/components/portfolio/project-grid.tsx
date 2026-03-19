@@ -65,8 +65,8 @@ export function ProjectGrid() {
   });
 
   return (
-    <section className="px-6 pb-12" aria-labelledby="project-grid-title">
-      <div className="mb-4 flex items-center gap-4">
+    <section className="px-6 pb-12 lg:px-4 lg:pb-8" aria-labelledby="project-grid-title">
+      <div className="mb-4 flex items-center gap-4 lg:mb-5">
         <h2
           id="project-grid-title"
           className="text-xs font-bold tracking-[0.3em] whitespace-nowrap text-primary/60 uppercase"
@@ -76,7 +76,7 @@ export function ProjectGrid() {
         <Separator className="w-auto flex-1 bg-primary/20" />
       </div>
 
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 gap-4 lg:gap-3">
         {localizedProjects.map((project, index) => (
           <Card
             key={`${project.version}-${index}`}

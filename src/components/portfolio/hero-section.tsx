@@ -41,8 +41,8 @@ export function HeroSection() {
   };
 
   return (
-    <section className="p-6 pt-12 pb-8">
-      <div className="corner-bracket border border-primary/10 bg-primary/5 p-6">
+    <section className="p-6 pt-12 pb-8 lg:px-4 lg:pt-8 lg:pb-6">
+      <div className="corner-bracket border border-primary/10 bg-primary/5 p-6 lg:p-5">
           <div className="mb-4 flex items-start gap-4">
             <Avatar className="size-16 rounded-none border border-primary/40">
               <AvatarImage
@@ -84,12 +84,12 @@ export function HeroSection() {
               </Badge>
             ))}
           </div>
-          <div className="flex flex-col gap-3 mt-4">
+          <div className="mt-4 flex flex-col gap-3 lg:flex-row lg:items-start">
             <Sheet>
               <SheetTrigger asChild>
                 <Button
                   type="button"
-                  className="h-auto w-full rounded bg-primary py-3 text-sm font-bold tracking-widest uppercase text-primary-foreground shadow-[0_0_20px_rgba(0,234,255,0.4)] hover:bg-primary/90"
+                  className="h-auto w-full rounded bg-primary py-2 text-sm font-bold tracking-widest uppercase text-primary-foreground hover:bg-primary/90 lg:flex-1"
                 >
                   <Terminal className="size-4" />
                   {t("hero.startContact")}
@@ -110,7 +110,7 @@ export function HeroSection() {
                   <button
                     type="button"
                     onClick={() => handleCopy(PROFILE_BIO.contact.email, "email")}
-                    className="flex items-center justify-between gap-3 rounded border border-primary/20 bg-primary/5 p-3 text-sm text-foreground transition-colors hover:bg-primary/10"
+                    className="flex cursor-pointer items-center justify-between gap-3 rounded border border-primary/20 bg-primary/5 p-3 text-sm text-foreground transition-colors hover:bg-primary/10"
                   >
                     <span className="flex items-center gap-3">
                       <Mail className="size-4 text-primary" />
@@ -124,7 +124,7 @@ export function HeroSection() {
                   <button
                     type="button"
                     onClick={() => handleCopy(PROFILE_BIO.contact.phone, "phone")}
-                    className="flex items-center justify-between gap-3 rounded border border-primary/20 bg-primary/5 p-3 text-sm text-foreground transition-colors hover:bg-primary/10"
+                    className="flex cursor-pointer items-center justify-between gap-3 rounded border border-primary/20 bg-primary/5 p-3 text-sm text-foreground transition-colors hover:bg-primary/10"
                   >
                     <span className="flex items-center gap-3">
                       <Phone className="size-4 text-primary" />
@@ -150,7 +150,7 @@ export function HeroSection() {
             <Button
               asChild
               variant="outline"
-              className="h-auto w-full rounded border-primary/50 bg-primary/5 py-3 text-sm font-bold tracking-widest uppercase text-primary hover:bg-primary/10 hover:text-primary dark:bg-primary/5 dark:hover:bg-primary/10"
+              className="h-auto w-full rounded border-primary/50 bg-primary/5 py-2 text-sm font-bold tracking-widest uppercase text-primary hover:bg-primary/10 hover:text-primary dark:bg-primary/5 dark:hover:bg-primary/10 lg:flex-1"
             >
               <a
                 href={resumeHref}
