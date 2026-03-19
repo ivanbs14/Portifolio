@@ -1,7 +1,7 @@
 export const METRICS_CHIPS = [
   {
     value: "5+",
-    label: "Anos Exp",
+    label: "Years Exp",
   },
   {
     value: "99%",
@@ -17,19 +17,19 @@ export const FEATURED_MISSION = {
   title: "Nexus Dashboard",
   status: "LIVE",
   description:
-    "Interface de monitoramento em tempo real para infraestrutura de servidores descentralizados.",
+    "Real-time monitoring interface for decentralized server infrastructure.",
   tags: ["React", "WebSockets", "ThreeJS"],
   image: {
     src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBTJiAzxsJDbRE_hVMhyrySSLMZdKsqhalPAzTXK218CSzpgSp3fMIwpX4e1gv5enLjruTfJNZF74vVHkL69a52o-cRja8SNWBdn240tv1hVIgrKVCD8BuhrfXqN7rZRt9mJcUA0SXj77OEbqgkt_nOC7t7ADmAt8dPS3ZmA3-WUyVvH22PvY3JLzcQMjhhizBGEloX2H3x8VQ_OL6EhxdFo-vI4qqThOVg78_CSKp3P1gK5vHUbq131bOgIMpI8aRZxp5jJwSYqdIV",
-    alt: "Interface futurista de ciberseguranca exibindo nos e telemetria.",
+    alt: "Futuristic cybersecurity interface displaying nodes and telemetry.",
   },
 } as const;
 
 export const PROJECT_GRID = [
   {
-    title: "Balance AI - Gestão financeira pessoal",
+    title: "Balance AI - Personal Financial Management",
     description:
-      "Plataforma corporativa de gestão financeira pessoal que utiliza inteligência artificial para monitorar movimentações e oferecer insights personalizados. O sistema permite o controle detalhado de orçamento com recursos",
+      "Corporate personal finance management platform that uses artificial intelligence to monitor transactions and provide personalized insights. The system enables detailed budget control with advanced capabilities.",
     version: "2025",
     links: ["code", "external"],
     linkUrls: {
@@ -38,9 +38,9 @@ export const PROJECT_GRID = [
     },
   },
   {
-    title: "AI copilador de Video",
+    title: "AI Video Copilot",
     description:
-      "Desenvolvido uma aplicação web, que recebe um video e interagindo com a API do chatgpt gera títulos, hashtags, e um resumo, do conteúdo do video.",
+      "Developed a web application that receives a video and, through the ChatGPT API, generates titles, hashtags, and a summary of the video's content.",
     version: "2024",
     links: ["code", "external"],
     linkUrls: {
@@ -49,9 +49,9 @@ export const PROJECT_GRID = [
     },
   },
   {
-    title: "APP Clima",
+    title: "Weather App",
     description:
-      "Descubra o clima com facilidade! Esta aplicação fornece informações precisas e atualizadas sobre o clima em qualquer lugar do mundo...",
+      "Check the weather with ease. This application provides accurate and up-to-date weather information anywhere in the world.",
     version: "2024",
     links: ["code", "external"],
     linkUrls: {
@@ -63,7 +63,7 @@ export const PROJECT_GRID = [
 
 export const TECH_MATRIX = [
   {
-    category: "Linguagens",
+    category: "Languages",
     tags: ["TypeScript", "JavaScript", "SQL"],
   },
   {
@@ -84,7 +84,7 @@ export const TECH_MATRIX = [
     ],
   },
   {
-    category: "Banco de Dados",
+    category: "Databases",
     tags: ["PostgreSQL", "Prisma", "TypeORM"],
   },
   {
@@ -92,7 +92,7 @@ export const TECH_MATRIX = [
     tags: ["AWS", "Docker", "CI/CD", "Git", "GitLab CI"],
   },
   {
-    category: "IA / LLM",
+    category: "AI / LLM",
     tags: [
       "Azure OpenAI",
       "OpenAI API",
@@ -108,48 +108,48 @@ export const TECH_MATRIX = [
 
 export const EXPERIENCE_TIMELINE = [
   {
-    period: "[ Jun/2025 - Atual ]",
+    period: "[ Jun/2025 - Present ]",
     title: "Full-Stack Developer",
     company: "LongView Tecnologia",
     highlights: [
-      "Desenvolver funcionalidades ponta a ponta em Next.js, NestJS, TypeScript e PostgreSQL nas camadas de frontend, backend e banco de dados.",
-      "Projetar e evoluir APIs REST com padroes de resposta e tratamento de erros para melhorar consistencia e manutencao.",
-      "Implementar integracoes AWS com Amazon S3 e AWS Lambda para suportar automacoes de upload e processamento.",
-      "Construir fluxos com Azure OpenAI e OpenAI para suporte ao cliente, automacao interna e extracao de dados estruturados.",
+      "Develop end-to-end features in Next.js, NestJS, TypeScript, and PostgreSQL across frontend, backend, and database layers.",
+      "Design and evolve REST APIs with response standards and error handling to improve consistency and maintainability.",
+      "Implement AWS integrations with Amazon S3 and AWS Lambda to support upload and processing automations.",
+      "Build flows with Azure OpenAI and OpenAI for customer support, internal automation, and structured data extraction.",
     ],
     isActive: true,
   },
   {
-    period: "[ Out/2024 - Mai/2025 ]",
+    period: "[ Oct/2024 - May/2025 ]",
     title: "Tech Lead | Full Stack Developer",
     company: "Hausey",
     highlights: [
-      "Conduzir lideranca tecnica da equipe, apoiando organizacao de entregas e decisoes arquitetonicas alinhadas aos padroes de engenharia.",
-      "Entregar funcionalidades com Next.js, NestJS e banco relacional com foco em manutencao, previsibilidade e escalabilidade.",
-      "Apoiar melhorias de CI/CD, revisoes de codigo e boas praticas durante o ciclo de entrega de software.",
-      "Contribuir com integracoes AWS para armazenamento de arquivos e rotinas automatizadas no backend.",
+      "Lead the team's technical direction, supporting delivery planning and architectural decisions aligned with engineering standards.",
+      "Deliver features with Next.js, NestJS, and relational databases focused on maintainability, predictability, and scalability.",
+      "Support CI/CD improvements, code reviews, and best practices throughout the software delivery cycle.",
+      "Contribute to AWS integrations for file storage and automated backend routines.",
     ],
     isActive: false,
   },
   {
-    period: "[ Dez/2023 - Out/2024 ]",
+    period: "[ Dec/2023 - Oct/2024 ]",
     title: "Front-end Developer",
     company: "Bugaboo Studio",
     highlights: [
-      "Desenvolver interfaces responsivas com React, TypeScript, Tailwind CSS e Styled Components para entregas de frontend.",
-      "Aprimorar usabilidade e consistencia visual com foco em acessibilidade e experiencia do usuario.",
-      "Integrar aplicacoes frontend com APIs REST, colaborando no alinhamento de contratos e entrega incremental de funcionalidades.",
+      "Develop responsive interfaces with React, TypeScript, Tailwind CSS, and Styled Components for frontend deliveries.",
+      "Improve usability and visual consistency with a focus on accessibility and user experience.",
+      "Integrate frontend applications with REST APIs, collaborating on contract alignment and incremental feature delivery.",
     ],
     isActive: false,
   },
   {
-    period: "[ Jan/2023 - Dez/2023 ]",
+    period: "[ Jan/2023 - Dec/2023 ]",
     title: "Full Stack Developer",
     company: "CodeDraw Technology",
     highlights: [
-      "Desenvolver e manter funcionalidades de aplicacoes com React.js e Styled Components no frontend.",
-      "Implementar servicos de backend com Node.js e integracoes de API para suportar funcionalidades de produto.",
-      "Utilizar Docker, GitLab CI e fluxo baseado em Git no pipeline de desenvolvimento e entrega.",
+      "Develop and maintain application features with React.js and Styled Components on the frontend.",
+      "Implement backend services with Node.js and API integrations to support product features.",
+      "Use Docker, GitLab CI, and a Git-based workflow in the development and delivery pipeline.",
     ],
     isActive: false,
   },
@@ -166,16 +166,16 @@ export const PROFILE_BIO = {
     linkedinHref: "https://www.linkedin.com/in/ivan-barbosa-653a29192",
   },
   summary:
-    "Engenheiro de Software Full-Stack com experiencia em desenvolvimento ponta a ponta de aplicacoes web com React, Next.js, NestJS, TypeScript e PostgreSQL, atuando com APIs REST, integracoes em nuvem na AWS e solucoes de IA com Azure OpenAI e OpenAI API.",
+    "Full-Stack Software Engineer with experience in end-to-end web application development using React, Next.js, NestJS, TypeScript, and PostgreSQL, working with REST APIs, AWS cloud integrations, and AI solutions with Azure OpenAI and the OpenAI API.",
   principles: [
-    "Arquitetura escalável",
-    "Liderança técnica",
-    "Colaboração em equipe",
+    "Scalable architecture",
+    "Technical leadership",
+    "Team collaboration",
     "Full-stack",
   ],
   avatar: {
     src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAUHyYW1C_23ILM4JKxd-QZp6UsGzyWWiZHn6GLKtawr4nabe15kNoFgxGObn4EKrQyN0-gAk1J-lVUr1nkjwm57Y5WqaELfq_DtAvewWmAlPqTYoPispNnDFgj5Jm1Vnoda5Ue1eRYkwTN3H9ZedX1318yPPhnIuj1vhWs4-45DeMf7-g_Pm_U1yamPRuz9-dt4Tb56hKStVDxvzN7_YJQ_qltDywTQ5mNyJgs_ErNFsuVwr0F3dsoJYDeUFgrzJVBfFFndg3FtZ4q",
-    alt: "Retrato de um desenvolvedor de software.",
+    alt: "Portrait of a software developer.",
   },
 } as const;
 
@@ -186,7 +186,7 @@ export const BOTTOM_HUD_NAV = [
     isActive: true,
   },
   {
-    label: "Projetos",
+    label: "Projects",
     icon: "projects",
     isActive: false,
   },
@@ -196,7 +196,7 @@ export const BOTTOM_HUD_NAV = [
     isActive: false,
   },
   {
-    label: "Sobre",
+    label: "About",
     icon: "about",
     isActive: false,
   },

@@ -1,4 +1,5 @@
 export { BackgroundEffects } from "./background-effects";
+export { LanguageProvider, usePortfolioLanguage } from "./language-provider";
 export { HudHeader } from "./hud-header";
 export { StatusBar } from "./status-bar";
 export { HeroSection } from "./hero-section";

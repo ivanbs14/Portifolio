@@ -36,10 +36,6 @@ export function StatusBar() {
         <span className="animate-pulse text-emerald-400 [text-shadow:0_0_10px_rgba(74,222,128,0.75)]">
           Active
         </span>
-        <span className="relative ml-1 inline-flex h-2 w-2">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/80" />
-          <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(74,222,128,0.95)]" />
-        </span>
       </div>
 
       <div className="flex flex-none items-center gap-1 text-[10px] tracking-tighter uppercase">

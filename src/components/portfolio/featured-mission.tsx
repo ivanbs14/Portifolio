@@ -1,9 +1,14 @@
+"use client";
+
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { usePortfolioLanguage } from "@/components/portfolio/language-provider";
 import { Separator } from "@/components/ui/separator";
 import { FEATURED_MISSION } from "@/data/portfolio";
 
 export function FeaturedMission() {
+  const { t } = usePortfolioLanguage();
+
   return (
     <section className="px-6 pb-12" aria-labelledby="featured-mission-title">
       <div className="mb-4 flex items-center gap-4">
@@ -11,7 +16,7 @@ export function FeaturedMission() {
           id="featured-mission-title"
           className="text-xs font-bold tracking-[0.3em] whitespace-nowrap text-primary/60 uppercase"
         >
-          Missao em destaque
+          {t("section.featuredMission")}
         </h2>
         <Separator className="w-auto flex-1 bg-primary/20" />
       </div>

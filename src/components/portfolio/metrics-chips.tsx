@@ -1,10 +1,20 @@
+"use client";
+
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { usePortfolioLanguage } from "@/components/portfolio/language-provider";
 import { METRICS_CHIPS } from "@/data/portfolio";
 
 export function MetricsChips() {
+  const { t } = usePortfolioLanguage();
+  const metricLabelByValue: Record<string, string> = {
+    "5+": t("metric.yearsExp"),
+    "99%": t("metric.perfScore"),
+    SOLID: t("metric.cleanArch"),
+  };
+
   return (
-    <section className="px-6 pb-8" aria-label="Metricas principais">
+    <section className="px-6 pb-8" aria-label={t("section.coreMetrics")}>
       <div className="grid grid-cols-3 gap-3">
         {METRICS_CHIPS.map((metric) => (
           <Card
@@ -14,7 +24,7 @@ export function MetricsChips() {
             <p className="text-xl font-bold text-primary">{metric.value}</p>
             <Separator className="bg-primary/20" />
             <p className="text-[9px] tracking-widest text-muted-foreground uppercase">
-              {metric.label}
+              {metricLabelByValue[metric.value] ?? metric.label}
             </p>
           </Card>
         ))}

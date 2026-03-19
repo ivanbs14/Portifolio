@@ -1,8 +1,13 @@
+"use client";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { usePortfolioLanguage } from "@/components/portfolio/language-provider";
 import { PROFILE_BIO } from "@/data/portfolio";
 
 export function ProfileBio() {
+  const { t } = usePortfolioLanguage();
+
   return (
     <section className="px-6 pb-12" aria-labelledby="profile-bio-title">
       <div className="border-l-2 border-primary bg-primary/5 p-6">
@@ -32,7 +37,7 @@ export function ProfileBio() {
         </div>
 
         <p className="mb-4 text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
-          {PROFILE_BIO.summary}
+          {t("profile.summary")}
         </p>
 
         <div className="flex flex-wrap gap-2">

@@ -4,7 +4,7 @@ import {
   ExperienceTimeline,
   HeroSection,
   HudHeader,
-  MetricsChips,
+  LanguageProvider,
   ProjectGrid,
   StatusBar,
   TechMatrix,
@@ -12,20 +12,21 @@ import {
 
 export default function Page() {
   return (
-    <main className="relative min-h-screen bg-secondary text-foreground">
-      <BackgroundEffects />
+    <LanguageProvider>
+      <main className="relative min-h-screen bg-secondary text-foreground">
+        <BackgroundEffects />
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-md flex-col border-x border-primary/10 bg-background/70 pb-24 backdrop-blur-sm">
-        <HudHeader />
-        <StatusBar />
-        <HeroSection />
-        <MetricsChips />
-        {/* <FeaturedMission /> */}
-        <TechMatrix />
-        <ExperienceTimeline />
-        <ProjectGrid />
-      </div>
-      <BottomHudNav />
-    </main>
+        <div className="relative z-10 mx-auto flex min-h-screen max-w-md flex-col border-x border-primary/10 bg-background/70 pb-24 backdrop-blur-sm">
+          <HudHeader />
+          <StatusBar />
+          <HeroSection />
+          {/* <FeaturedMission /> */}
+          <TechMatrix />
+          <ExperienceTimeline />
+          <ProjectGrid />
+        </div>
+        <BottomHudNav />
+      </main>
+    </LanguageProvider>
   );
 }

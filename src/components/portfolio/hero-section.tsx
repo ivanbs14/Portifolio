@@ -14,9 +14,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { usePortfolioLanguage } from "@/components/portfolio/language-provider";
 import { PROFILE_BIO } from "@/data/portfolio";
 
 export function HeroSection() {
+  const { t, resumeHref } = usePortfolioLanguage();
   const [copiedField, setCopiedField] = useState<"email" | "phone" | null>(null);
   const copyTimeoutRef = useRef<number | null>(null);
 
@@ -64,7 +66,7 @@ export function HeroSection() {
           </div>
 
           <p className="mb-4 text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
-            {PROFILE_BIO.summary}
+            {t("profile.summary")}
           </p>
 
           <span className="mt-2 block text-xs text-primary/80 font-mono">
@@ -90,7 +92,7 @@ export function HeroSection() {
                   className="h-auto w-full rounded bg-primary py-3 text-sm font-bold tracking-widest uppercase text-primary-foreground shadow-[0_0_20px_rgba(0,234,255,0.4)] hover:bg-primary/90"
                 >
                   <Terminal className="size-4" />
-                  Iniciar Contato
+                  {t("hero.startContact")}
                 </Button>
               </SheetTrigger>
               <SheetContent
@@ -99,11 +101,9 @@ export function HeroSection() {
               >
                 <SheetHeader className="p-0 pr-8">
                   <SheetTitle className="text-primary uppercase tracking-widest text-sm">
-                    Contato
+                    {t("hero.contact")}
                   </SheetTitle>
-                  <SheetDescription>
-                    Fale comigo por e-mail, telefone ou LinkedIn.
-                  </SheetDescription>
+                  <SheetDescription>{t("hero.contactDescription")}</SheetDescription>
                 </SheetHeader>
 
                 <div className="grid gap-3">
@@ -117,7 +117,7 @@ export function HeroSection() {
                       {PROFILE_BIO.contact.email}
                     </span>
                     {copiedField === "email" ? (
-                      <span className="text-xs font-mono text-primary">Copiado</span>
+                      <span className="text-xs font-mono text-primary">{t("hero.copied")}</span>
                     ) : null}
                   </button>
 
@@ -131,7 +131,7 @@ export function HeroSection() {
                       {PROFILE_BIO.contact.phone}
                     </span>
                     {copiedField === "phone" ? (
-                      <span className="text-xs font-mono text-primary">Copiado</span>
+                      <span className="text-xs font-mono text-primary">{t("hero.copied")}</span>
                     ) : null}
                   </button>
 
@@ -153,11 +153,12 @@ export function HeroSection() {
               className="h-auto w-full rounded border-primary/50 bg-primary/5 py-3 text-sm font-bold tracking-widest uppercase text-primary hover:bg-primary/10 hover:text-primary dark:bg-primary/5 dark:hover:bg-primary/10"
             >
               <a
-                href="https://drive.google.com/file/d/1LkfMK5VmTeljaQgKm_GiBvtjVwaEFcjz/view?usp=sharing"
+                href={resumeHref}
                 target="_blank"
                 rel="noreferrer"
+                download
               >
-                Download CV
+                {t("hero.downloadLabel")}
               </a>
             </Button>
           </div>

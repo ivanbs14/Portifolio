@@ -1,0 +1,16 @@
+Ivan Barbosa da Silva
+Fortaleza/CE
+
+Professional Summary
+Full-Stack Software Engineer experienced in end-to-end web application development with React, Next.js, NestJS, TypeScript, and PostgreSQL, working with REST APIs, AWS cloud integrations, and AI solutions using Azure OpenAI and the OpenAI API.
+
+Contact
+Email: ivanbarbosag@gmail.com
+Phone: (85) 9 9924-6230
+LinkedIn: https://www.linkedin.com/in/ivan-barbosa-653a29192
+
+Skills
+- Scalable architecture
+- Technical leadership
+- Team collaboration
+- Full-stack development

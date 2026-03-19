@@ -1,7 +1,10 @@
+"use client";
+
 import { Code2, ExternalLink } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { usePortfolioLanguage } from "@/components/portfolio/language-provider";
 import { Separator } from "@/components/ui/separator";
 import {
   Tooltip,
@@ -19,12 +22,48 @@ const LINK_ICON = {
 type ProjectLink = keyof typeof LINK_ICON;
 type ProjectLinkUrls = Partial<Record<ProjectLink, string>>;
 
-const LINK_LABEL: Record<ProjectLink, string> = {
-  code: "Code",
-  external: "External",
-};
+const PROJECT_GRID_PT = [
+  {
+    title: "Balance AI - Gestao financeira pessoal",
+    description:
+      "Plataforma corporativa de gestao financeira pessoal que utiliza inteligencia artificial para monitorar movimentacoes e oferecer insights personalizados. O sistema permite o controle detalhado de orcamento com recursos avancados.",
+  },
+  {
+    title: "AI copilador de Video",
+    description:
+      "Aplicacao web que recebe um video e, por meio da API do ChatGPT, gera titulos, hashtags e um resumo do conteudo.",
+  },
+  {
+    title: "App Clima",
+    description:
+      "Descubra o clima com facilidade. Esta aplicacao fornece informacoes precisas e atualizadas sobre o clima em qualquer lugar do mundo.",
+  },
+] as const;
 
 export function ProjectGrid() {
+  const { language, t } = usePortfolioLanguage();
+  const linkLabelByType: Record<ProjectLink, string> = {
+    code: t("project.linkLabelCode"),
+    external: t("project.linkLabelExternal"),
+  };
+  const localizedProjects = PROJECT_GRID.map((project, index) => {
+    if (language !== "pt") {
+      return project;
+    }
+
+    const translatedProject = PROJECT_GRID_PT[index];
+
+    if (!translatedProject) {
+      return project;
+    }
+
+    return {
+      ...project,
+      title: translatedProject.title,
+      description: translatedProject.description,
+    };
+  });
+
   return (
     <section className="px-6 pb-12" aria-labelledby="project-grid-title">
       <div className="mb-4 flex items-center gap-4">
@@ -32,15 +71,15 @@ export function ProjectGrid() {
           id="project-grid-title"
           className="text-xs font-bold tracking-[0.3em] whitespace-nowrap text-primary/60 uppercase"
         >
-          Arquivos de projeto
+          {t("section.projectFiles")}
         </h2>
         <Separator className="w-auto flex-1 bg-primary/20" />
       </div>
 
       <div className="grid grid-cols-1 gap-4">
-        {PROJECT_GRID.map((project) => (
+        {localizedProjects.map((project, index) => (
           <Card
-            key={project.title}
+            key={`${project.version}-${index}`}
             className="corner-bracket rounded border-primary/10 bg-primary/5 p-0 shadow-none transition-colors hover:border-primary/40"
           >
             <CardContent className="space-y-3 p-4">
@@ -58,7 +97,7 @@ export function ProjectGrid() {
                     {project.links.map((link) => {
                       const Icon = LINK_ICON[link];
                       const href = (project.linkUrls as ProjectLinkUrls)[link];
-                      const label = LINK_LABEL[link];
+                      const label = linkLabelByType[link];
 
                       if (href) {
                         return (
@@ -68,7 +107,7 @@ export function ProjectGrid() {
                                 href={href}
                                 target="_blank"
                                 rel="noreferrer noopener"
-                                aria-label={`${label} link para ${project.title}`}
+                                aria-label={`${label} ${t("project.linkTo")} ${project.title}`}
                                 className="inline-flex"
                               >
                                 <Badge
