@@ -2,11 +2,9 @@ import {
   BackgroundEffects,
   BottomHudNav,
   ExperienceTimeline,
-  FeaturedMission,
   HeroSection,
   HudHeader,
   MetricsChips,
-  ProfileBio,
   ProjectGrid,
   StatusBar,
   TechMatrix,
@@ -22,11 +20,10 @@ export default function Page() {
         <StatusBar />
         <HeroSection />
         <MetricsChips />
-        <FeaturedMission />
-        <ProjectGrid />
+        {/* <FeaturedMission /> */}
         <TechMatrix />
         <ExperienceTimeline />
-        <ProfileBio />
+        <ProjectGrid />
       </div>
       <BottomHudNav />
     </main>

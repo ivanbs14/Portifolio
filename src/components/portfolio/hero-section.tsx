@@ -1,40 +1,166 @@
-import { Terminal } from "lucide-react";
+"use client";
 
+import { useRef, useState } from "react";
+import { Linkedin, Mail, Phone, Terminal } from "lucide-react";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { PROFILE_BIO } from "@/data/portfolio";
 
 export function HeroSection() {
+  const [copiedField, setCopiedField] = useState<"email" | "phone" | null>(null);
+  const copyTimeoutRef = useRef<number | null>(null);
+
+  const handleCopy = async (value: string, field: "email" | "phone") => {
+    try {
+      await navigator.clipboard.writeText(value);
+    } catch {
+      return;
+    }
+
+    setCopiedField(field);
+
+    if (copyTimeoutRef.current) {
+      window.clearTimeout(copyTimeoutRef.current);
+    }
+
+    copyTimeoutRef.current = window.setTimeout(() => {
+      setCopiedField(null);
+    }, 1800);
+  };
+
   return (
     <section className="p-6 pt-12 pb-8">
       <div className="corner-bracket border border-primary/10 bg-primary/5 p-6">
-        <h1 className="mb-4 text-3xl leading-tight font-extrabold tracking-tight text-foreground">
-          Construindo <span className="text-primary italic">sistemas escaláveis</span>{" "}
-          e interfaces HUD
-        </h1>
+          <div className="mb-4 flex items-start gap-4">
+            <Avatar className="size-16 rounded-none border border-primary/40">
+              <AvatarImage
+                src={PROFILE_BIO.avatar.src}
+                alt={PROFILE_BIO.avatar.alt}
+                className="grayscale"
+              />
+              <AvatarFallback className="rounded-none bg-primary/10 font-bold text-primary">
+                I
+              </AvatarFallback>
+            </Avatar>
 
-        <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
-          Fullstack Developer focado em arquiteturas reativas de alta
-          performance.
+            <div className="min-w-0">
+              <h2 className="text-base font-bold leading-tight text-foreground sm:text-lg">
+                {PROFILE_BIO.name}
+              </h2>
+              <p className="text-[10px] font-mono tracking-tight text-primary uppercase">
+                {PROFILE_BIO.location}
+              </p>
+            </div>
+          </div>
+
+          <p className="mb-4 text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
+            {PROFILE_BIO.summary}
+          </p>
+
           <span className="mt-2 block text-xs text-primary/80 font-mono">
             {"// Next.js, React, Node.js & TypeScript"}
           </span>
-        </p>
 
-        <div className="flex flex-col gap-3">
-          <Button
-            type="button"
-            className="h-auto w-full rounded bg-primary py-3 text-sm font-bold tracking-widest uppercase text-primary-foreground shadow-[0_0_20px_rgba(0,234,255,0.4)] hover:bg-primary/90"
-          >
-            <Terminal className="size-4" />
-            Iniciar Contato
-          </Button>
-          <Button
-            type="button"
-            variant="outline"
-            className="h-auto w-full rounded border-primary/50 bg-primary/5 py-3 text-sm font-bold tracking-widest uppercase text-primary hover:bg-primary/10 hover:text-primary dark:bg-primary/5 dark:hover:bg-primary/10"
-          >
-            Ver Projetos
-          </Button>
-        </div>
+          <div className="flex flex-wrap gap-2 mt-4">
+            {PROFILE_BIO.principles.map((principle) => (
+              <Badge
+                key={principle}
+                variant="outline"
+                className="max-w-full justify-start rounded-sm border-primary/20 bg-transparent px-2 py-1 text-[10px] leading-snug text-primary/70 whitespace-normal break-words"
+              >
+                {`● ${principle}`}
+              </Badge>
+            ))}
+          </div>
+          <div className="flex flex-col gap-3 mt-4">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button
+                  type="button"
+                  className="h-auto w-full rounded bg-primary py-3 text-sm font-bold tracking-widest uppercase text-primary-foreground shadow-[0_0_20px_rgba(0,234,255,0.4)] hover:bg-primary/90"
+                >
+                  <Terminal className="size-4" />
+                  Iniciar Contato
+                </Button>
+              </SheetTrigger>
+              <SheetContent
+                side="bottom"
+                className="inset-x-auto left-1/2 bottom-6 w-[calc(100%-3rem)] -translate-x-1/2 rounded-lg border border-primary/30 bg-background/95 p-5 sm:max-w-md sm:p-6"
+              >
+                <SheetHeader className="p-0 pr-8">
+                  <SheetTitle className="text-primary uppercase tracking-widest text-sm">
+                    Contato
+                  </SheetTitle>
+                  <SheetDescription>
+                    Fale comigo por e-mail, telefone ou LinkedIn.
+                  </SheetDescription>
+                </SheetHeader>
+
+                <div className="grid gap-3">
+                  <button
+                    type="button"
+                    onClick={() => handleCopy(PROFILE_BIO.contact.email, "email")}
+                    className="flex items-center justify-between gap-3 rounded border border-primary/20 bg-primary/5 p-3 text-sm text-foreground transition-colors hover:bg-primary/10"
+                  >
+                    <span className="flex items-center gap-3">
+                      <Mail className="size-4 text-primary" />
+                      {PROFILE_BIO.contact.email}
+                    </span>
+                    {copiedField === "email" ? (
+                      <span className="text-xs font-mono text-primary">Copiado</span>
+                    ) : null}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleCopy(PROFILE_BIO.contact.phone, "phone")}
+                    className="flex items-center justify-between gap-3 rounded border border-primary/20 bg-primary/5 p-3 text-sm text-foreground transition-colors hover:bg-primary/10"
+                  >
+                    <span className="flex items-center gap-3">
+                      <Phone className="size-4 text-primary" />
+                      {PROFILE_BIO.contact.phone}
+                    </span>
+                    {copiedField === "phone" ? (
+                      <span className="text-xs font-mono text-primary">Copiado</span>
+                    ) : null}
+                  </button>
+
+                  <a
+                    href={PROFILE_BIO.contact.linkedinHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-3 rounded border border-primary/20 bg-primary/5 p-3 text-sm text-foreground transition-colors hover:bg-primary/10"
+                  >
+                    <Linkedin className="size-4 text-primary" />
+                    {PROFILE_BIO.contact.linkedin}
+                  </a>
+                </div>
+              </SheetContent>
+            </Sheet>
+            <Button
+              asChild
+              variant="outline"
+              className="h-auto w-full rounded border-primary/50 bg-primary/5 py-3 text-sm font-bold tracking-widest uppercase text-primary hover:bg-primary/10 hover:text-primary dark:bg-primary/5 dark:hover:bg-primary/10"
+            >
+              <a
+                href="https://drive.google.com/file/d/1LkfMK5VmTeljaQgKm_GiBvtjVwaEFcjz/view?usp=sharing"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Download CV
+              </a>
+            </Button>
+          </div>
       </div>
     </section>
   );

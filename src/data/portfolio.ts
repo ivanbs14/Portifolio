@@ -158,13 +158,20 @@ export const EXPERIENCE_TIMELINE = [
 export const PROFILE_BIO = {
   name: "Ivan Barbosa da Silva",
   location: "Fortaleza/CE",
+  contact: {
+    email: "ivanbarbosag@gmail.com",
+    phone: "(85) 9 9924-6230",
+    phoneHref: "+5585999246230",
+    linkedin: "linkedin.com/in/ivan-barbosa-653a29192",
+    linkedinHref: "https://www.linkedin.com/in/ivan-barbosa-653a29192",
+  },
   summary:
     "Engenheiro de Software Full-Stack com experiencia em desenvolvimento ponta a ponta de aplicacoes web com React, Next.js, NestJS, TypeScript e PostgreSQL, atuando com APIs REST, integracoes em nuvem na AWS e solucoes de IA com Azure OpenAI e OpenAI API.",
   principles: [
-    "Engenharia escalavel em arquitetura modular",
-    "Qualidade de entrega com revisao de codigo e CI/CD",
-    "Colaboracao tecnica e lideranca de equipe",
-    "Desenvolvimento full-stack ponta a ponta",
+    "Arquitetura escalável",
+    "Liderança técnica",
+    "Colaboração em equipe",
+    "Full-stack",
   ],
   avatar: {
     src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAUHyYW1C_23ILM4JKxd-QZp6UsGzyWWiZHn6GLKtawr4nabe15kNoFgxGObn4EKrQyN0-gAk1J-lVUr1nkjwm57Y5WqaELfq_DtAvewWmAlPqTYoPispNnDFgj5Jm1Vnoda5Ue1eRYkwTN3H9ZedX1318yPPhnIuj1vhWs4-45DeMf7-g_Pm_U1yamPRuz9-dt4Tb56hKStVDxvzN7_YJQ_qltDywTQ5mNyJgs_ErNFsuVwr0F3dsoJYDeUFgrzJVBfFFndg3FtZ4q",
