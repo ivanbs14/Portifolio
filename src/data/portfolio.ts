@@ -63,12 +63,46 @@ export const PROJECT_GRID = [
 
 export const TECH_MATRIX = [
   {
-    category: "Frontend Core",
-    tags: ["NEXT.JS", "REACT", "TYPESCRIPT", "TAILWIND"],
+    category: "Linguagens",
+    tags: ["TypeScript", "JavaScript", "SQL"],
   },
   {
-    category: "Backend & Infra",
-    tags: ["NEST.JS", "NODE.JS", "POSTGRESQL", "DOCKER", "AWS"],
+    category: "Frontend",
+    tags: ["React", "Next.js", "Tailwind CSS", "Styled Components"],
+  },
+  {
+    category: "Backend",
+    tags: [
+      "NestJS",
+      "Node.js",
+      "Express",
+      "REST API",
+      "DTO Validation",
+      "Dependency Injection",
+      "JWT",
+      "Swagger/OpenAPI",
+    ],
+  },
+  {
+    category: "Banco de Dados",
+    tags: ["PostgreSQL", "Prisma", "TypeORM"],
+  },
+  {
+    category: "Cloud / DevOps",
+    tags: ["AWS", "Docker", "CI/CD", "Git", "GitLab CI"],
+  },
+  {
+    category: "IA / LLM",
+    tags: [
+      "Azure OpenAI",
+      "OpenAI API",
+      "AI Agents",
+      "Prompt Engineering",
+      "LLM API Integration",
+      "Workflow Orchestration",
+      "Structured Data Extraction",
+      "Data Classification",
+    ],
   },
 ] as const;
 
