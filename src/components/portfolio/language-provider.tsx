@@ -114,18 +114,26 @@ const isPortfolioLanguage = (value: string | null): value is PortfolioLanguage =
   value === "pt" || value === "en";
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<PortfolioLanguage>(() => {
-    if (typeof window === "undefined") {
-      return DEFAULT_LANGUAGE;
-    }
-
-    const savedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
-    return isPortfolioLanguage(savedLanguage) ? savedLanguage : DEFAULT_LANGUAGE;
-  });
+  const [language, setLanguage] = useState<PortfolioLanguage>(DEFAULT_LANGUAGE);
+  const [hasHydratedLanguage, setHasHydratedLanguage] = useState(false);
 
   useEffect(() => {
+    const savedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+
+    if (isPortfolioLanguage(savedLanguage)) {
+      setLanguage(savedLanguage);
+    }
+
+    setHasHydratedLanguage(true);
+  }, []);
+
+  useEffect(() => {
+    if (!hasHydratedLanguage) {
+      return;
+    }
+
     window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
-  }, [language]);
+  }, [hasHydratedLanguage, language]);
 
   const value = useMemo<PortfolioLanguageContextValue>(() => {
     const t = (key: TranslationKey) =>

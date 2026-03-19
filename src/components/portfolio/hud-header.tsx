@@ -11,29 +11,32 @@ const THEME_STORAGE_KEY = "hud-theme";
 export function HudHeader() {
   const { language, setLanguage, t } = usePortfolioLanguage();
 
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window === "undefined") {
-      return true;
-    }
+  const [isDark, setIsDark] = useState(true);
+  const [hasHydratedTheme, setHasHydratedTheme] = useState(false);
 
+  useEffect(() => {
     const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
 
     if (savedTheme === "dark") {
-      return true;
+      setIsDark(true);
+    } else if (savedTheme === "light") {
+      setIsDark(false);
+    } else {
+      setIsDark(document.documentElement.classList.contains("dark"));
     }
 
-    if (savedTheme === "light") {
-      return false;
-    }
-
-    return document.documentElement.classList.contains("dark");
-  });
+    setHasHydratedTheme(true);
+  }, []);
 
   useEffect(() => {
+    if (!hasHydratedTheme) {
+      return;
+    }
+
     const root = document.documentElement;
     root.classList.toggle("dark", isDark);
     window.localStorage.setItem(THEME_STORAGE_KEY, isDark ? "dark" : "light");
-  }, [isDark]);
+  }, [hasHydratedTheme, isDark]);
 
   const handleThemeChange = (checked: boolean) => {
     setIsDark(checked);
