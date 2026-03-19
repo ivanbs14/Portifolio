@@ -156,15 +156,15 @@ export const EXPERIENCE_TIMELINE = [
 ] as const;
 
 export const PROFILE_BIO = {
-  name: "Bio.init()",
-  location: "Loc: Sao Paulo, BR",
+  name: "Ivan Barbosa da Silva",
+  location: "Fortaleza/CE",
   summary:
-    "Sou um desenvolvedor apaixonado por interfaces futuristas e codigo limpo. Acredito que a tecnologia deve ser invisivel, porem poderosa.",
+    "Engenheiro de Software Full-Stack com experiencia em desenvolvimento ponta a ponta de aplicacoes web com React, Next.js, NestJS, TypeScript e PostgreSQL, atuando com APIs REST, integracoes em nuvem na AWS e solucoes de IA com Azure OpenAI e OpenAI API.",
   principles: [
-    "Desempenho primeiro",
-    "UX minimalista",
-    "Codigo semantico",
-    "Foco em resultados",
+    "Engenharia escalavel em arquitetura modular",
+    "Qualidade de entrega com revisao de codigo e CI/CD",
+    "Colaboracao tecnica e lideranca de equipe",
+    "Desenvolvimento full-stack ponta a ponta",
   ],
   avatar: {
     src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAUHyYW1C_23ILM4JKxd-QZp6UsGzyWWiZHn6GLKtawr4nabe15kNoFgxGObn4EKrQyN0-gAk1J-lVUr1nkjwm57Y5WqaELfq_DtAvewWmAlPqTYoPispNnDFgj5Jm1Vnoda5Ue1eRYkwTN3H9ZedX1318yPPhnIuj1vhWs4-45DeMf7-g_Pm_U1yamPRuz9-dt4Tb56hKStVDxvzN7_YJQ_qltDywTQ5mNyJgs_ErNFsuVwr0F3dsoJYDeUFgrzJVBfFFndg3FtZ4q",
