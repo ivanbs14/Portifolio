@@ -42,7 +42,7 @@ export function HeroSection() {
   return (
     <section
       id="section-home"
-      className="scroll-mt-28 p-6 pt-6 pb-8 lg:px-4 lg:pt-4 lg:pb-4"
+      className="scroll-mt-28 px-6 pt-3 pb-4 lg:px-4 lg:pt-4 lg:pb-4"
     >
       <div className="corner-bracket overflow-hidden border border-primary/10 bg-primary/5 lg:grid lg:grid-cols-[minmax(160px,20%)_1fr] lg:p-0">
         <div className="relative hidden lg:block lg:p-7">
@@ -81,7 +81,7 @@ export function HeroSection() {
 
             </div>
 
-            <p className="mb-4 text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
+            <p className="mb-4 text-xs leading-relaxed text-muted-foreground sm:text-sm lg:text-[15px]">
               {t("profile.summary")}
             </p>
 

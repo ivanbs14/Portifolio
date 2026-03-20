@@ -25,19 +25,19 @@ type ProjectLinkUrls = Partial<Record<ProjectLink, string>>;
 
 const PROJECT_GRID_PT = [
   {
-    title: "Balance AI - Gestao financeira pessoal",
+    title: "Balance AI - Gestão financeira pessoal",
     description:
-      "Plataforma corporativa de gestao financeira pessoal que utiliza inteligencia artificial para monitorar movimentacoes e oferecer insights personalizados. O sistema permite o controle detalhado de orcamento com recursos avancados.",
+      "Plataforma corporativa de gestão financeira pessoal que utiliza inteligência artificial para monitorar movimentações e oferecer insights personalizados. O sistema permite o controle detalhado de orçamento com recursos avançados.",
   },
   {
-    title: "AI copilador de Video",
+    title: "AI copilador de Vídeo",
     description:
-      "Aplicacao web que recebe um video e, por meio da API do ChatGPT, gera titulos, hashtags e um resumo do conteudo.",
+      "Aplicação web que recebe um vídeo e, por meio da API do ChatGPT, gera títulos, hashtags e um resumo do conteúdo.",
   },
   {
     title: "App Clima",
     description:
-      "Descubra o clima com facilidade. Esta aplicacao fornece informacoes precisas e atualizadas sobre o clima em qualquer lugar do mundo.",
+      "Descubra o clima com facilidade. Esta aplicação fornece informações precisas e atualizadas sobre o clima em qualquer lugar do mundo.",
   },
 ] as const;
 
@@ -101,7 +101,7 @@ export function ProjectGrid() {
                   {project.title}
                 </h3>
 
-                <p className="text-xs leading-snug text-muted-foreground">
+                <p className="text-sm leading-relaxed text-muted-foreground lg:text-[15px]">
                   {project.description}
                 </p>
 
@@ -156,7 +156,7 @@ export function ProjectGrid() {
 
                   <Badge
                     variant="ghost"
-                    className="rounded-sm px-0 font-mono text-xs text-muted-foreground"
+                    className="rounded-sm px-0 font-mono text-sm text-muted-foreground lg:text-[15px]"
                   >
                     {project.version}
                   </Badge>

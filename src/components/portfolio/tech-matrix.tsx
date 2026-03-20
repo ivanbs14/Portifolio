@@ -24,7 +24,7 @@ export function TechMatrix() {
   return (
     <section
       id="section-stack"
-      className="scroll-mt-28 px-6 pb-12 lg:px-4 lg:pb-8"
+      className="scroll-mt-28 px-6 pb-6 lg:px-4 lg:pb-8"
       aria-labelledby="tech-matrix-title"
     >
       <Card className="rounded border-primary/30 bg-primary/5 p-0 shadow-none">

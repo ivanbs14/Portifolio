@@ -10,19 +10,19 @@ const EXPERIENCE_TIMELINE_PT = [
     title: "Desenvolvedor Full-Stack",
     highlights: [
       "Desenvolver funcionalidades ponta a ponta em Next.js, NestJS, TypeScript e PostgreSQL nas camadas de frontend, backend e banco de dados.",
-      "Projetar e evoluir APIs REST com padroes de resposta e tratamento de erros para melhorar consistencia e manutencao.",
-      "Implementar integracoes AWS com Amazon S3 e AWS Lambda para suportar automacoes de upload e processamento.",
-      "Construir fluxos com Azure OpenAI e OpenAI para suporte ao cliente, automacao interna e extracao de dados estruturados.",
+      "Projetar e evoluir APIs REST com padrões de resposta e tratamento de erros para melhorar consistência e manutenção.",
+      "Implementar integrações AWS com Amazon S3 e AWS Lambda para suportar automações de upload e processamento.",
+      "Construir fluxos com Azure OpenAI e OpenAI para suporte ao cliente, automação interna e extração de dados estruturados.",
     ],
   },
   {
     period: "[ Out/2024 - Mai/2025 ]",
     title: "Tech Lead | Desenvolvedor Full Stack",
     highlights: [
-      "Conduzir lideranca tecnica da equipe, apoiando organizacao de entregas e decisoes arquitetonicas alinhadas aos padroes de engenharia.",
-      "Entregar funcionalidades com Next.js, NestJS e banco relacional com foco em manutencao, previsibilidade e escalabilidade.",
-      "Apoiar melhorias de CI/CD, revisoes de codigo e boas praticas durante o ciclo de entrega de software.",
-      "Contribuir com integracoes AWS para armazenamento de arquivos e rotinas automatizadas no backend.",
+      "Conduzir liderança técnica da equipe, apoiando organização de entregas e decisões arquitetônicas alinhadas aos padrões de engenharia.",
+      "Entregar funcionalidades com Next.js, NestJS e banco relacional com foco em manutenção, previsibilidade e escalabilidade.",
+      "Apoiar melhorias de CI/CD, revisões de código e boas práticas durante o ciclo de entrega de software.",
+      "Contribuir com integrações AWS para armazenamento de arquivos e rotinas automatizadas no backend.",
     ],
   },
   {
@@ -30,16 +30,16 @@ const EXPERIENCE_TIMELINE_PT = [
     title: "Desenvolvedor Front-end",
     highlights: [
       "Desenvolver interfaces responsivas com React, TypeScript, Tailwind CSS e Styled Components para entregas de frontend.",
-      "Aprimorar usabilidade e consistencia visual com foco em acessibilidade e experiencia do usuario.",
-      "Integrar aplicacoes frontend com APIs REST, colaborando no alinhamento de contratos e entrega incremental de funcionalidades.",
+      "Aprimorar usabilidade e consistência visual com foco em acessibilidade e experiência do usuário.",
+      "Integrar aplicações frontend com APIs REST, colaborando no alinhamento de contratos e entrega incremental de funcionalidades.",
     ],
   },
   {
     period: "[ Jan/2023 - Dez/2023 ]",
     title: "Desenvolvedor Full Stack",
     highlights: [
-      "Desenvolver e manter funcionalidades de aplicacoes com React.js e Styled Components no frontend.",
-      "Implementar servicos de backend com Node.js e integracoes de API para suportar funcionalidades de produto.",
+      "Desenvolver e manter funcionalidades de aplicações com React.js e Styled Components no frontend.",
+      "Implementar serviços de backend com Node.js e integrações de API para suportar funcionalidades de produto.",
       "Utilizar Docker, GitLab CI e fluxo baseado em Git no pipeline de desenvolvimento e entrega.",
     ],
   },
@@ -73,7 +73,7 @@ export function ExperienceTimeline() {
   return (
     <section
       id="section-experience"
-      className="scroll-mt-28 px-6 pb-12 lg:px-4 lg:pb-8"
+      className="scroll-mt-28 px-6 pb-6 lg:px-4 lg:pb-8"
       aria-labelledby="experience-timeline-title"
     >
       <h2
@@ -128,7 +128,7 @@ export function ExperienceTimeline() {
             </p>
 
             <ul
-              className={`list-inside list-disc space-y-1 text-xs ${
+              className={`list-inside list-disc space-y-1 text-sm leading-relaxed lg:text-[15px] ${
                 entry.isActive
                   ? "text-foreground dark:text-muted-foreground"
                   : "text-foreground dark:text-muted-foreground/80"
