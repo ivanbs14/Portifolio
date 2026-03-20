@@ -33,7 +33,7 @@ export const PROJECT_GRID = [
     version: "2025",
     links: ["code", "external"],
     linkUrls: {
-      code: "https://balance-neon.vercel.app/login",
+      code: "https://github.com/ivanbs14/balance.git",
       external: "https://youtu.be/SonR1LwSMjM?si=0w6e9cJDQLAwWcvo",
     },
   },
