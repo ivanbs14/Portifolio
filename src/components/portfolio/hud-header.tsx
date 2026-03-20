@@ -45,12 +45,12 @@ export function HudHeader() {
   };
 
   const headerContainerClass = isDark
-    ? "border-primary/20 bg-background/80 shadow-[0_10px_26px_-20px_rgba(0,234,255,0.55)]"
-    : "border-primary/30 bg-background/95 shadow-[0_10px_22px_-18px_rgba(14,165,233,0.45)]";
+    ? "border-primary/20 bg-background/80 shadow-[0_10px_26px_-20px_rgba(0,102,204,0.5)]"
+    : "border-primary/30 bg-background/95 shadow-[0_10px_22px_-18px_rgba(2,78,132,0.45)]";
 
   const controlContainerClass = isDark
     ? "border-primary/30 bg-primary/10"
-    : "border-primary/40 bg-primary/15 shadow-[0_0_14px_rgba(14,165,233,0.2)]";
+    : "border-primary/40 bg-primary/15 shadow-[0_0_14px_rgba(2,78,132,0.26)]";
 
   return (
     <header
@@ -76,7 +76,9 @@ export function HudHeader() {
             onClick={() => setLanguage("pt")}
             className={`cursor-pointer text-[10px] font-bold tracking-widest uppercase transition-colors ${
               language === "pt"
-                ? "text-white"
+                ? isDark
+                  ? "text-white"
+                  : "text-black"
                 : "text-primary/60 hover:text-primary/80"
             }`}
             aria-pressed={language === "pt"}
@@ -89,7 +91,9 @@ export function HudHeader() {
             onClick={() => setLanguage("en")}
             className={`cursor-pointer text-[10px] font-bold tracking-widest uppercase transition-colors ${
               language === "en"
-                ? "text-white"
+                ? isDark
+                  ? "text-white"
+                  : "text-black"
                 : "text-primary/60 hover:text-primary/80"
             }`}
             aria-pressed={language === "en"}

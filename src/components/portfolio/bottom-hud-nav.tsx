@@ -141,7 +141,7 @@ export function BottomHudNav() {
           <Button
             type="button"
             size="icon"
-            className="absolute top-0 left-1/2 size-12 -translate-x-1/2 -translate-y-8 rounded-full border-4 border-background bg-primary text-primary-foreground shadow-[0_0_15px_rgba(0,234,255,0.5)] hover:bg-primary/90"
+            className="absolute top-0 left-1/2 size-12 -translate-x-1/2 -translate-y-8 rounded-full border-4 border-background bg-primary text-primary-foreground shadow-[0_0_15px_rgba(2,78,132,0.5)] dark:shadow-[0_0_15px_rgba(0,102,204,0.5)] hover:bg-primary/90"
             aria-label={t("hero.startContact")}
           >
             <Terminal className="size-5" />

@@ -49,47 +49,49 @@
 
 :root {
   --radius: 0.625rem;
-  --background: hsl(0 0% 100%);
+  --hud-blue-rgb: 0 74 153;
+  --background: hsl(210 16% 92%);
   --foreground: hsl(210 20% 8%);
   --card: hsl(0 0% 100% / 0.74);
   --card-foreground: hsl(210 20% 8%);
   --popover: hsl(0 0% 100% / 0.9);
   --popover-foreground: hsl(210 20% 8%);
-  --primary: rgb(0 123 255);
+  --primary: hsl(212 100% 30%);
   --primary-foreground: hsl(0 0% 100%);
   --secondary: hsl(210 17% 98%);
   --secondary-foreground: hsl(211 20% 24%);
   --muted: hsl(210 17% 98%);
-  --muted-foreground: hsl(211 20% 46%);
-  --accent: hsl(211 100% 97%);
+  --muted-foreground: hsl(210 20% 8%);
+  --accent: hsl(212 72% 88%);
   --accent-foreground: hsl(210 20% 8%);
   --destructive: hsl(0 72% 46%);
-  --border: hsl(211 100% 50% / 0.16);
-  --input: hsl(211 100% 50% / 0.12);
-  --ring: hsl(211 100% 50% / 0.35);
-  --chart-1: hsl(211 100% 50%);
-  --chart-2: hsl(216 92% 58%);
-  --chart-3: hsl(206 92% 62%);
-  --chart-4: hsl(221 82% 56%);
-  --chart-5: hsl(199 90% 60%);
+  --border: hsl(212 100% 30% / 0.26);
+  --input: hsl(212 100% 30% / 0.18);
+  --ring: hsl(212 100% 30% / 0.5);
+  --chart-1: hsl(212 100% 30%);
+  --chart-2: hsl(214 86% 38%);
+  --chart-3: hsl(206 82% 42%);
+  --chart-4: hsl(220 72% 40%);
+  --chart-5: hsl(199 80% 42%);
   --sidebar: hsl(0 0% 100%);
   --sidebar-foreground: hsl(210 20% 8%);
-  --sidebar-primary: hsl(211 100% 50%);
+  --sidebar-primary: hsl(212 100% 30%);
   --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(211 100% 97%);
+  --sidebar-accent: hsl(212 72% 88%);
   --sidebar-accent-foreground: hsl(210 20% 8%);
-  --sidebar-border: hsl(211 100% 50% / 0.14);
-  --sidebar-ring: hsl(211 100% 50% / 0.35);
+  --sidebar-border: hsl(212 100% 30% / 0.22);
+  --sidebar-ring: hsl(212 100% 30% / 0.5);
 }
 
 .dark {
+  --hud-blue-rgb: 0 92 191;
   --background: hsl(210 20% 8%);
   --foreground: hsl(210 40% 98%);
   --card: hsl(210 20% 12% / 0.66);
   --card-foreground: hsl(210 40% 98%);
   --popover: hsl(210 20% 12% / 0.94);
   --popover-foreground: hsl(210 40% 98%);
-  --primary: hsl(211 100% 50%);
+  --primary: hsl(211 100% 42%);
   --primary-foreground: hsl(0 0% 100%);
   --secondary: hsl(210 18% 14%);
   --secondary-foreground: hsl(210 40% 96%);
@@ -98,22 +100,22 @@
   --accent: hsl(211 28% 18%);
   --accent-foreground: hsl(210 40% 96%);
   --destructive: hsl(0 63% 44%);
-  --border: hsl(211 100% 50% / 0.28);
-  --input: hsl(211 100% 50% / 0.2);
-  --ring: hsl(211 100% 50% / 0.5);
-  --chart-1: hsl(211 100% 50%);
-  --chart-2: hsl(216 92% 58%);
-  --chart-3: hsl(206 92% 62%);
-  --chart-4: hsl(221 82% 56%);
-  --chart-5: hsl(199 90% 60%);
+  --border: hsl(211 100% 42% / 0.34);
+  --input: hsl(211 100% 42% / 0.26);
+  --ring: hsl(211 100% 42% / 0.56);
+  --chart-1: hsl(211 100% 42%);
+  --chart-2: hsl(216 88% 48%);
+  --chart-3: hsl(206 84% 52%);
+  --chart-4: hsl(221 74% 48%);
+  --chart-5: hsl(199 82% 52%);
   --sidebar: hsl(210 20% 8%);
   --sidebar-foreground: hsl(210 40% 98%);
-  --sidebar-primary: hsl(211 100% 50%);
+  --sidebar-primary: hsl(211 100% 42%);
   --sidebar-primary-foreground: hsl(0 0% 100%);
   --sidebar-accent: hsl(211 28% 18%);
   --sidebar-accent-foreground: hsl(210 40% 96%);
-  --sidebar-border: hsl(211 100% 50% / 0.24);
-  --sidebar-ring: hsl(211 100% 50% / 0.5);
+  --sidebar-border: hsl(211 100% 42% / 0.3);
+  --sidebar-ring: hsl(211 100% 42% / 0.56);
 }
 
 @layer base {
@@ -139,8 +141,8 @@
     pointer-events: none;
     background: repeating-linear-gradient(
       to bottom,
-      rgb(0 123 255 / 0.08) 0,
-      rgb(0 123 255 / 0.08) 1px,
+      rgb(var(--hud-blue-rgb) / 0.08) 0,
+      rgb(var(--hud-blue-rgb) / 0.08) 1px,
       transparent 2px,
       transparent 4px
     );
@@ -164,7 +166,7 @@
     position: absolute;
     width: 12px;
     height: 12px;
-    border-color: rgb(0 123 255 / 0.75);
+    border-color: rgb(var(--hud-blue-rgb) / 0.75);
     pointer-events: none;
   }
 
@@ -183,11 +185,11 @@
   }
 
   .glow-border {
-    border: 1px solid rgb(0 123 255 / 0.45);
+    border: 1px solid rgb(var(--hud-blue-rgb) / 0.45);
     box-shadow:
-      0 0 0 1px rgb(0 123 255 / 0.16) inset,
-      0 0 22px rgb(0 123 255 / 0.18),
-      0 0 42px rgb(0 123 255 / 0.12);
+      0 0 0 1px rgb(var(--hud-blue-rgb) / 0.16) inset,
+      0 0 22px rgb(var(--hud-blue-rgb) / 0.18),
+      0 0 42px rgb(var(--hud-blue-rgb) / 0.12);
   }
 }
 

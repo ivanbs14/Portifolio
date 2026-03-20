@@ -110,14 +110,18 @@ export function ExperienceTimeline() {
             </p>
             <h3
               className={`tracking-tight uppercase ${
-                entry.isActive ? "font-bold text-foreground" : "font-bold text-foreground/80"
+                entry.isActive
+                  ? "font-bold text-foreground"
+                  : "font-bold text-foreground dark:text-foreground/80"
               }`}
             >
               {entry.title}
             </h3>
             <p
               className={`mb-2 text-xs font-medium tracking-wide ${
-                entry.isActive ? "text-muted-foreground" : "text-muted-foreground/80"
+                entry.isActive
+                  ? "text-foreground dark:text-muted-foreground"
+                  : "text-foreground dark:text-muted-foreground/80"
               }`}
             >
               {entry.company}
@@ -125,7 +129,9 @@ export function ExperienceTimeline() {
 
             <ul
               className={`list-inside list-disc space-y-1 text-[11px] ${
-                entry.isActive ? "text-muted-foreground" : "text-muted-foreground/80"
+                entry.isActive
+                  ? "text-foreground dark:text-muted-foreground"
+                  : "text-foreground dark:text-muted-foreground/80"
               }`}
             >
               {entry.highlights.map((highlight) => (
