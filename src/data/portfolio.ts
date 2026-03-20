@@ -186,18 +186,18 @@ export const BOTTOM_HUD_NAV = [
     isActive: true,
   },
   {
-    label: "Projects",
-    icon: "projects",
-    isActive: false,
-  },
-  {
     label: "Stack",
     icon: "stack",
     isActive: false,
   },
   {
-    label: "About",
+    label: "Experience",
     icon: "about",
+    isActive: false,
+  },
+  {
+    label: "Projects",
+    icon: "projects",
     isActive: false,
   },
 ] as const;

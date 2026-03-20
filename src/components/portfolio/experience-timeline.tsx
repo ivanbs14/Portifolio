@@ -71,7 +71,11 @@ export function ExperienceTimeline() {
   );
 
   return (
-    <section className="px-6 pb-12 lg:px-4 lg:pb-8" aria-labelledby="experience-timeline-title">
+    <section
+      id="section-experience"
+      className="scroll-mt-28 px-6 pb-12 lg:px-4 lg:pb-8"
+      aria-labelledby="experience-timeline-title"
+    >
       <h2
         id="experience-timeline-title"
         className="mb-6 text-xs font-bold tracking-[0.3em] text-primary/60 uppercase lg:mb-5"

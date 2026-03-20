@@ -73,7 +73,11 @@ export function ProjectGrid() {
   );
 
   return (
-    <section className="px-6 pb-12 lg:px-4 lg:pb-8" aria-labelledby="project-grid-title">
+    <section
+      id="section-projects"
+      className="scroll-mt-28 px-6 pb-12 lg:px-4 lg:pb-8"
+      aria-labelledby="project-grid-title"
+    >
       <div className="mb-4 flex items-center gap-4 lg:mb-5">
         <h2
           id="project-grid-title"

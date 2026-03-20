@@ -35,7 +35,7 @@ const EN_TRANSLATIONS = {
   "nav.home": "Home",
   "nav.projects": "Projects",
   "nav.stack": "Stack",
-  "nav.about": "About",
+  "nav.about": "Experience",
   "nav.ariaLabel": "Bottom navigation",
   "nav.newActionAria": "New action",
 
@@ -85,7 +85,7 @@ const UI_TRANSLATIONS: Record<PortfolioLanguage, Record<TranslationKey, string>>
     "nav.home": "Home",
     "nav.projects": "Projetos",
     "nav.stack": "Stack",
-    "nav.about": "Sobre",
+    "nav.about": "Experiencia",
     "nav.ariaLabel": "Navegacao inferior",
     "nav.newActionAria": "Nova acao",
 

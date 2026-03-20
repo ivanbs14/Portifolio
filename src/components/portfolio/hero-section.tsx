@@ -1,26 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { Linkedin, Mail, Phone, Terminal } from "lucide-react";
+import { Terminal } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { ContactSheet } from "@/components/portfolio/contact-sheet";
 import { usePortfolioLanguage } from "@/components/portfolio/language-provider";
 import { PROFILE_BIO } from "@/data/portfolio";
 
 export function HeroSection() {
   const { t, resumeHref } = usePortfolioLanguage();
-  const [copiedField, setCopiedField] = useState<"email" | "phone" | null>(null);
-  const copyTimeoutRef = useRef<number | null>(null);
   const translatedPrinciples = [
     t("profile.principle.scalableArchitecture"),
     t("profile.principle.technicalLeadership"),
@@ -28,34 +18,11 @@ export function HeroSection() {
     t("profile.principle.fullStack"),
   ];
 
-  const handleCopy = async (value: string, field: "email" | "phone") => {
-    try {
-      await navigator.clipboard.writeText(value);
-    } catch {
-      return;
-    }
-
-    setCopiedField(field);
-
-    if (copyTimeoutRef.current) {
-      window.clearTimeout(copyTimeoutRef.current);
-    }
-
-    copyTimeoutRef.current = window.setTimeout(() => {
-      setCopiedField(null);
-    }, 1800);
-  };
-
-  useEffect(() => {
-    return () => {
-      if (copyTimeoutRef.current) {
-        window.clearTimeout(copyTimeoutRef.current);
-      }
-    };
-  }, []);
-
   return (
-    <section className="p-6 pt-6 pb-8 lg:px-4 lg:pt-4 lg:pb-4">
+    <section
+      id="section-home"
+      className="scroll-mt-28 p-6 pt-6 pb-8 lg:px-4 lg:pt-4 lg:pb-4"
+    >
       <div className="corner-bracket overflow-hidden border border-primary/10 bg-primary/5 lg:grid lg:grid-cols-[minmax(160px,20%)_1fr] lg:p-0">
         <div className="relative hidden lg:block lg:p-7">
           <img
@@ -115,8 +82,7 @@ export function HeroSection() {
           </div>
 
           <div className="mt-4 flex flex-col gap-3 lg:flex-row lg:items-start">
-            <Sheet>
-              <SheetTrigger asChild>
+            <ContactSheet>
                 <Button
                   type="button"
                   className="h-auto w-full rounded bg-primary py-2 text-sm font-bold tracking-widest uppercase text-primary-foreground hover:bg-primary/90 lg:flex-1"
@@ -124,59 +90,7 @@ export function HeroSection() {
                   <Terminal className="size-4" />
                   {t("hero.startContact")}
                 </Button>
-              </SheetTrigger>
-              <SheetContent
-                side="bottom"
-                className="inset-x-auto left-1/2 bottom-6 w-[calc(100%-3rem)] -translate-x-1/2 rounded-lg border border-primary/30 bg-background/95 p-5 sm:max-w-md sm:p-6"
-              >
-                <SheetHeader className="p-0 pr-8">
-                  <SheetTitle className="text-primary uppercase tracking-widest text-sm">
-                    {t("hero.contact")}
-                  </SheetTitle>
-                  <SheetDescription>{t("hero.contactDescription")}</SheetDescription>
-                </SheetHeader>
-
-                <div className="grid gap-3">
-                  <button
-                    type="button"
-                    onClick={() => handleCopy(PROFILE_BIO.contact.email, "email")}
-                    className="flex cursor-pointer items-center justify-between gap-3 rounded border border-primary/20 bg-primary/5 p-3 text-sm text-foreground transition-colors hover:bg-primary/10"
-                  >
-                    <span className="flex items-center gap-3">
-                      <Mail className="size-4 text-primary" />
-                      {PROFILE_BIO.contact.email}
-                    </span>
-                    {copiedField === "email" ? (
-                      <span className="text-xs font-mono text-primary">{t("hero.copied")}</span>
-                    ) : null}
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => handleCopy(PROFILE_BIO.contact.phone, "phone")}
-                    className="flex cursor-pointer items-center justify-between gap-3 rounded border border-primary/20 bg-primary/5 p-3 text-sm text-foreground transition-colors hover:bg-primary/10"
-                  >
-                    <span className="flex items-center gap-3">
-                      <Phone className="size-4 text-primary" />
-                      {PROFILE_BIO.contact.phone}
-                    </span>
-                    {copiedField === "phone" ? (
-                      <span className="text-xs font-mono text-primary">{t("hero.copied")}</span>
-                    ) : null}
-                  </button>
-
-                  <a
-                    href={PROFILE_BIO.contact.linkedinHref}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-3 rounded border border-primary/20 bg-primary/5 p-3 text-sm text-foreground transition-colors hover:bg-primary/10"
-                  >
-                    <Linkedin className="size-4 text-primary" />
-                    {PROFILE_BIO.contact.linkedin}
-                  </a>
-                </div>
-              </SheetContent>
-            </Sheet>
+            </ContactSheet>
             <Button
               asChild
               variant="outline"
