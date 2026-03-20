@@ -78,7 +78,7 @@ export function ExperienceTimeline() {
     >
       <h2
         id="experience-timeline-title"
-        className="mb-6 text-xs font-bold tracking-[0.3em] text-primary/60 uppercase lg:mb-5"
+        className="mb-6 text-center text-xs font-bold tracking-[0.3em] text-primary/60 uppercase lg:mb-5"
       >
         {t("section.experienceLogs")}
       </h2>
@@ -102,7 +102,7 @@ export function ExperienceTimeline() {
             </div>
 
             <p
-              className={`mb-1 font-mono text-[10px] ${
+              className={`mb-1 font-mono text-xs ${
                 entry.isActive ? "text-primary" : "text-muted-foreground"
               }`}
             >
@@ -128,7 +128,7 @@ export function ExperienceTimeline() {
             </p>
 
             <ul
-              className={`list-inside list-disc space-y-1 text-[11px] ${
+              className={`list-inside list-disc space-y-1 text-xs ${
                 entry.isActive
                   ? "text-foreground dark:text-muted-foreground"
                   : "text-foreground dark:text-muted-foreground/80"

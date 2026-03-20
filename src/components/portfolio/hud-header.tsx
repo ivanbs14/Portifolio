@@ -74,31 +74,35 @@ export function HudHeader() {
           <button
             type="button"
             onClick={() => setLanguage("pt")}
-            className={`cursor-pointer text-[10px] font-bold tracking-widest uppercase transition-colors ${
+            className={`inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-sm text-sm transition-opacity ${
               language === "pt"
                 ? isDark
-                  ? "text-white"
-                  : "text-black"
-                : "text-primary/60 hover:text-primary/80"
+                  ? "bg-primary/20 opacity-100"
+                  : "bg-primary/15 opacity-100"
+                : "opacity-55 hover:opacity-80"
             }`}
             aria-pressed={language === "pt"}
+            aria-label="Portuguese (Brazil)"
           >
-            PT
+            <span aria-hidden="true">🇧🇷</span>
+            <span className="sr-only">PT</span>
           </button>
           <span className="text-[10px] text-primary/40">|</span>
           <button
             type="button"
             onClick={() => setLanguage("en")}
-            className={`cursor-pointer text-[10px] font-bold tracking-widest uppercase transition-colors ${
+            className={`inline-flex h-6 w-6 cursor-pointer items-center justify-center rounded-sm text-sm transition-opacity ${
               language === "en"
                 ? isDark
-                  ? "text-white"
-                  : "text-black"
-                : "text-primary/60 hover:text-primary/80"
+                  ? "bg-primary/20 opacity-100"
+                  : "bg-primary/15 opacity-100"
+                : "opacity-55 hover:opacity-80"
             }`}
             aria-pressed={language === "en"}
+            aria-label="English (United States)"
           >
-            EN
+            <span aria-hidden="true">🇺🇸</span>
+            <span className="sr-only">EN</span>
           </button>
         </div>
         <div

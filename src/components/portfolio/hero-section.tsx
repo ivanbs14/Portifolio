@@ -70,10 +70,10 @@ export function HeroSection() {
                 </Avatar>
 
                 <div className="min-w-0">
-                  <h2 className="text-base font-bold leading-tight text-foreground sm:text-lg">
+                  <h2 className="text-lg font-bold leading-tight text-foreground sm:text-xl">
                     {PROFILE_BIO.name}
                   </h2>
-                  <p className="text-[10px] font-mono tracking-tight text-primary uppercase">
+                  <p className="text-xs font-mono tracking-tight text-primary uppercase">
                     {PROFILE_BIO.location}
                   </p>
                 </div>
@@ -94,7 +94,7 @@ export function HeroSection() {
                 <Badge
                   key={principle}
                   variant="outline"
-                  className="max-w-full justify-start rounded-sm border-primary/20 bg-transparent px-2 py-1 text-[10px] leading-snug text-primary/70 whitespace-normal break-words"
+                  className="max-w-full justify-start rounded-sm border-primary/20 bg-transparent px-2 py-1 text-xs leading-snug text-primary/70 whitespace-normal break-words"
                 >
                   {`● ${principle}`}
                 </Badge>
@@ -106,7 +106,7 @@ export function HeroSection() {
             <ContactSheet>
               <Button
                 type="button"
-                className="h-auto w-full rounded bg-primary py-2 text-sm font-bold tracking-widest uppercase text-primary-foreground hover:bg-primary/90 lg:flex-1"
+                className="h-8 w-full rounded bg-primary px-3 text-xs font-bold tracking-wide uppercase text-primary-foreground hover:bg-primary/90 lg:flex-1"
                 onPointerEnter={() => toggleExternalMatrix(CONTACT_BUTTON_SOURCE, true)}
                 onPointerLeave={() => toggleExternalMatrix(CONTACT_BUTTON_SOURCE, false)}
                 onPointerCancel={() => toggleExternalMatrix(CONTACT_BUTTON_SOURCE, false)}
@@ -118,7 +118,7 @@ export function HeroSection() {
             <Button
               asChild
               variant="outline"
-              className="h-auto w-full rounded border-primary/50 bg-primary/5 py-2 text-sm font-bold tracking-widest uppercase text-primary hover:bg-primary/10 hover:text-primary dark:bg-primary/5 dark:hover:bg-primary/10 lg:flex-1"
+              className="h-8 w-full rounded border-primary/50 bg-primary/5 px-3 text-xs font-bold tracking-wide uppercase text-primary hover:bg-primary/10 hover:text-primary dark:bg-primary/5 dark:hover:bg-primary/10 lg:flex-1"
               onPointerEnter={() => toggleExternalMatrix(DOWNLOAD_BUTTON_SOURCE, true)}
               onPointerLeave={() => toggleExternalMatrix(DOWNLOAD_BUTTON_SOURCE, false)}
               onPointerCancel={() => toggleExternalMatrix(DOWNLOAD_BUTTON_SOURCE, false)}

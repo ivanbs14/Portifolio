@@ -79,6 +79,7 @@ export function ProjectGrid() {
       aria-labelledby="project-grid-title"
     >
       <div className="mb-4 flex items-center gap-4 lg:mb-5">
+        <Separator className="w-auto flex-1 bg-primary/20" />
         <h2
           id="project-grid-title"
           className="text-xs font-bold tracking-[0.3em] whitespace-nowrap text-primary/60 uppercase"
@@ -100,7 +101,7 @@ export function ProjectGrid() {
                   {project.title}
                 </h3>
 
-                <p className="text-[11px] leading-snug text-muted-foreground">
+                <p className="text-xs leading-snug text-muted-foreground">
                   {project.description}
                 </p>
 
@@ -155,7 +156,7 @@ export function ProjectGrid() {
 
                   <Badge
                     variant="ghost"
-                    className="rounded-sm px-0 font-mono text-[10px] text-muted-foreground"
+                    className="rounded-sm px-0 font-mono text-xs text-muted-foreground"
                   >
                     {project.version}
                   </Badge>
