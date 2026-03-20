@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { Terminal } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -8,6 +9,10 @@ import { Button } from "@/components/ui/button";
 import { ContactSheet } from "@/components/portfolio/contact-sheet";
 import { usePortfolioLanguage } from "@/components/portfolio/language-provider";
 import { PROFILE_BIO } from "@/data/portfolio";
+import { dispatchMatrixBackgroundToggle } from "@/lib/matrix-background-signal";
+
+const CONTACT_BUTTON_SOURCE = "hero-contact-button";
+const DOWNLOAD_BUTTON_SOURCE = "hero-download-cv-button";
 
 export function HeroSection() {
   const { t, resumeHref } = usePortfolioLanguage();
@@ -17,6 +22,22 @@ export function HeroSection() {
     t("profile.principle.teamCollaboration"),
     t("profile.principle.fullStack"),
   ];
+  const toggleExternalMatrix = (source: string, active: boolean) => {
+    dispatchMatrixBackgroundToggle({ source, active });
+  };
+
+  useEffect(() => {
+    return () => {
+      dispatchMatrixBackgroundToggle({
+        source: CONTACT_BUTTON_SOURCE,
+        active: false,
+      });
+      dispatchMatrixBackgroundToggle({
+        source: DOWNLOAD_BUTTON_SOURCE,
+        active: false,
+      });
+    };
+  }, []);
 
   return (
     <section
@@ -83,18 +104,24 @@ export function HeroSection() {
 
           <div className="mt-4 flex flex-col gap-3 lg:flex-row lg:items-start">
             <ContactSheet>
-                <Button
-                  type="button"
-                  className="h-auto w-full rounded bg-primary py-2 text-sm font-bold tracking-widest uppercase text-primary-foreground hover:bg-primary/90 lg:flex-1"
-                >
-                  <Terminal className="size-4" />
-                  {t("hero.startContact")}
-                </Button>
+              <Button
+                type="button"
+                className="h-auto w-full rounded bg-primary py-2 text-sm font-bold tracking-widest uppercase text-primary-foreground hover:bg-primary/90 lg:flex-1"
+                onPointerEnter={() => toggleExternalMatrix(CONTACT_BUTTON_SOURCE, true)}
+                onPointerLeave={() => toggleExternalMatrix(CONTACT_BUTTON_SOURCE, false)}
+                onPointerCancel={() => toggleExternalMatrix(CONTACT_BUTTON_SOURCE, false)}
+              >
+                <Terminal className="size-4" />
+                {t("hero.startContact")}
+              </Button>
             </ContactSheet>
             <Button
               asChild
               variant="outline"
               className="h-auto w-full rounded border-primary/50 bg-primary/5 py-2 text-sm font-bold tracking-widest uppercase text-primary hover:bg-primary/10 hover:text-primary dark:bg-primary/5 dark:hover:bg-primary/10 lg:flex-1"
+              onPointerEnter={() => toggleExternalMatrix(DOWNLOAD_BUTTON_SOURCE, true)}
+              onPointerLeave={() => toggleExternalMatrix(DOWNLOAD_BUTTON_SOURCE, false)}
+              onPointerCancel={() => toggleExternalMatrix(DOWNLOAD_BUTTON_SOURCE, false)}
             >
               <a
                 href={resumeHref}
